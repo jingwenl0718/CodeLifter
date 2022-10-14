@@ -51,5 +51,4 @@ public class UserService {
 		   result.rejectValue("email", "Matches", "An account with this email already exists!");
 	   }
    }
-   
 }
