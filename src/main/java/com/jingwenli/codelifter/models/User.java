@@ -71,6 +71,54 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
     
+//  ----------------relationship with JobPost-----------------------------
+    @OneToMany(mappedBy="jobPostCreator", fetch = FetchType.LAZY)
+    private List<JobPost> createdJobPosts;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "commenters_jobposts", 
+        joinColumns = @JoinColumn(name = "jobpostcommenter_id"), 
+        inverseJoinColumns = @JoinColumn(name = "jobpost_id")
+    )
+    private List<JobPost> commentededJobPosts;
+    
+//  ----------------relationship with InterviewPrepPost--------------------
+    @OneToMany(mappedBy="interviewPrepPostCreator", fetch = FetchType.LAZY)
+    private List<InterviewPrepPost> createdInterviewPrepPosts;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "commenters_interviewprepposts", 
+        joinColumns = @JoinColumn(name = "interviewpreppostcommenter_id"), 
+        inverseJoinColumns = @JoinColumn(name = "interviewpreppost_id")
+    )
+    private List<InterviewPrepPost> commentedInterviewPrepPosts;
+    
+//  ----------------relationship with LifestylePost------------------------
+    @OneToMany(mappedBy="lifestylePostCreator", fetch = FetchType.LAZY)
+    private List<LifestylePost> createdLifestylePosts;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "commenters_lifestyleposts", 
+        joinColumns = @JoinColumn(name = "lifestylepostcommenter_id"), 
+        inverseJoinColumns = @JoinColumn(name = "lifestylepost_id")
+    )
+    private List<LifestylePost> commentedLifestylePosts;
+    
+//  ----------------relationship with SuccessStory-------------------------
+    @OneToMany(mappedBy="successStoryCreator", fetch = FetchType.LAZY)
+    private List<SuccessStory> createdSuccessStories;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "commenters_successstories", 
+        joinColumns = @JoinColumn(name = "successstorycommenter_id"), 
+        inverseJoinColumns = @JoinColumn(name = "successstory_id")
+    )
+    private List<SuccessStory> commentededSuccessStories;
+    
     public User() {
     }
 
@@ -136,54 +184,6 @@ public class User {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-    
-//  ----------------relationship with JobPost-----------------------------
-    @OneToMany(mappedBy="jobPostCreator", fetch = FetchType.LAZY)
-    private List<JobPost> createdJobPosts;
-    
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "commenters_jobPosts", 
-        joinColumns = @JoinColumn(name = "jobPostCommenter_id"), 
-        inverseJoinColumns = @JoinColumn(name = "jobPost_id")
-    )
-    private List<JobPost> commentededJobPosts;
-    
-//  ----------------relationship with InterviewPrepPost--------------------
-    @OneToMany(mappedBy="InterviewPrepPostCreator", fetch = FetchType.LAZY)
-    private List<InterviewPrepPost> createdInterviewPrepPosts;
-    
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "commenters_interviewPrepPosts", 
-        joinColumns = @JoinColumn(name = "interviewPrepPostCommenter_id"), 
-        inverseJoinColumns = @JoinColumn(name = "interviewPrepPost_id")
-    )
-    private List<InterviewPrepPost> commentedInterviewPrepPosts;
-    
-//  ----------------relationship with LifestylePost------------------------
-    @OneToMany(mappedBy="lifestylePostCreator", fetch = FetchType.LAZY)
-    private List<LifestylePost> createdLifestylePosts;
-    
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "commenters_lifestylePosts", 
-        joinColumns = @JoinColumn(name = "lifestylePostCommenter_id"), 
-        inverseJoinColumns = @JoinColumn(name = "lifestylePost_id")
-    )
-    private List<LifestylePost> commentedLifestylePosts;
-    
-//  ----------------relationship with SuccessStory-------------------------
-    @OneToMany(mappedBy="successStoryCreator", fetch = FetchType.LAZY)
-    private List<SuccessStory> createdSuccessStories;
-    
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "commenters_successStories", 
-        joinColumns = @JoinColumn(name = "successStoryCommenter_id"), 
-        inverseJoinColumns = @JoinColumn(name = "successStory_id")
-    )
-    private List<SuccessStory> commentededSuccessStories;
 
 	public List<JobPost> getCreatedJobPosts() {
 		return createdJobPosts;

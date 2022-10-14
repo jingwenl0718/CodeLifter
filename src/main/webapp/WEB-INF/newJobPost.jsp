@@ -29,7 +29,7 @@
 	   			<form:textarea cols="30" rows="10" class="form-control" path="description"/>
 	   			<form:errors style="color:red" path="description"/>
 	   		</p>
-	   		<form:hidden path="jobPostCreator" value="${userId}"/>
+	   		<form:hidden path="jobPostCreator" value="${currentUser.id}"/>
 	   		<div class="d-flex justify-content-end">
 		   		<a class="btn btn-secondary" href="/dashboard/jobposts">Cancel</a>
 		   		<button class="btn btn-danger" type="submit">Submit</button>

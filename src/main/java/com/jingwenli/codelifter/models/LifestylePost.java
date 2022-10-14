@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="lifestylePosts")
+@Table(name="lifestyleposts")
 public class LifestylePost {
 	
 	@Id
@@ -43,17 +43,16 @@ public class LifestylePost {
     
 //  ----------------relationship with User-----------------------------
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="lifestylePostCreator_id")
+    @JoinColumn(name="lifestylepostcreator_id")
     private User lifestylePostCreator;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-        name = "commenters_lifestylePosts", 
-        joinColumns = @JoinColumn(name = "lifestylePost_id"), 
-        inverseJoinColumns = @JoinColumn(name = "lifestylePostCommenter_id")
+        name = "commenters_lifestyleposts", 
+        joinColumns = @JoinColumn(name = "lifestylepost_id"), 
+        inverseJoinColumns = @JoinColumn(name = "lifestylepostcommenter_id")
     )
     private List<User> lifestylePostCommenters;
-    
     
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
