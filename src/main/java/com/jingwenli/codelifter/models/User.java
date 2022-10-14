@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -136,5 +137,115 @@ public class User {
 		this.roles = roles;
 	}
     
+//  ----------------relationship with JobPost-----------------------------
+    @OneToMany(mappedBy="jobPostCreator", fetch = FetchType.LAZY)
+    private List<JobPost> createdJobPosts;
     
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "commenters_jobPosts", 
+        joinColumns = @JoinColumn(name = "jobPostCommenter_id"), 
+        inverseJoinColumns = @JoinColumn(name = "jobPost_id")
+    )
+    private List<JobPost> commentededJobPosts;
+    
+//  ----------------relationship with InterviewPrepPost--------------------
+    @OneToMany(mappedBy="InterviewPrepPostCreator", fetch = FetchType.LAZY)
+    private List<InterviewPrepPost> createdInterviewPrepPosts;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "commenters_interviewPrepPosts", 
+        joinColumns = @JoinColumn(name = "interviewPrepPostCommenter_id"), 
+        inverseJoinColumns = @JoinColumn(name = "interviewPrepPost_id")
+    )
+    private List<InterviewPrepPost> commentedInterviewPrepPosts;
+    
+//  ----------------relationship with LifestylePost------------------------
+    @OneToMany(mappedBy="lifestylePostCreator", fetch = FetchType.LAZY)
+    private List<LifestylePost> createdLifestylePosts;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "commenters_lifestylePosts", 
+        joinColumns = @JoinColumn(name = "lifestylePostCommenter_id"), 
+        inverseJoinColumns = @JoinColumn(name = "lifestylePost_id")
+    )
+    private List<LifestylePost> commentedLifestylePosts;
+    
+//  ----------------relationship with SuccessStory-------------------------
+    @OneToMany(mappedBy="successStoryCreator", fetch = FetchType.LAZY)
+    private List<SuccessStory> createdSuccessStories;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "commenters_successStories", 
+        joinColumns = @JoinColumn(name = "successStoryCommenter_id"), 
+        inverseJoinColumns = @JoinColumn(name = "successStory_id")
+    )
+    private List<SuccessStory> commentededSuccessStories;
+
+	public List<JobPost> getCreatedJobPosts() {
+		return createdJobPosts;
+	}
+	
+	public void setCreatedJobPosts(List<JobPost> createdJobPosts) {
+		this.createdJobPosts = createdJobPosts;
+	}
+	
+	public List<JobPost> getCommentededJobPosts() {
+		return commentededJobPosts;
+	}
+	
+	public void setCommentededJobPosts(List<JobPost> commentededJobPosts) {
+		this.commentededJobPosts = commentededJobPosts;
+	}
+	
+	public List<InterviewPrepPost> getCreatedInterviewPrepPosts() {
+		return createdInterviewPrepPosts;
+	}
+	
+	public void setCreatedInterviewPrepPosts(List<InterviewPrepPost> createdInterviewPrepPosts) {
+		this.createdInterviewPrepPosts = createdInterviewPrepPosts;
+	}
+	
+	public List<InterviewPrepPost> getCommentedInterviewPrepPosts() {
+		return commentedInterviewPrepPosts;
+	}
+	
+	public void setCommentedInterviewPrepPosts(List<InterviewPrepPost> commentedInterviewPrepPosts) {
+		this.commentedInterviewPrepPosts = commentedInterviewPrepPosts;
+	}
+	
+	public List<LifestylePost> getCreatedLifestylePosts() {
+		return createdLifestylePosts;
+	}
+	
+	public void setCreatedLifestylePosts(List<LifestylePost> createdLifestylePosts) {
+		this.createdLifestylePosts = createdLifestylePosts;
+	}
+	
+	public List<LifestylePost> getCommentedLifestylePosts() {
+		return commentedLifestylePosts;
+	}
+	
+	public void setCommentedLifestylePosts(List<LifestylePost> commentedLifestylePosts) {
+		this.commentedLifestylePosts = commentedLifestylePosts;
+	}
+	
+	public List<SuccessStory> getCreatedSuccessStories() {
+		return createdSuccessStories;
+	}
+	
+	public void setCreatedSuccessStories(List<SuccessStory> createdSuccessStories) {
+		this.createdSuccessStories = createdSuccessStories;
+	}
+	
+	public List<SuccessStory> getCommentededSuccessStories() {
+		return commentededSuccessStories;
+	}
+	
+	public void setCommentededSuccessStories(List<SuccessStory> commentededSuccessStories) {
+		this.commentededSuccessStories = commentededSuccessStories;
+	}
 }

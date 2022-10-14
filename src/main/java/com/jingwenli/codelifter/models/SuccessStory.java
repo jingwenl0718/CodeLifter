@@ -22,9 +22,9 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="jobPosts")
-public class JobPost {
-
+@Table(name="successStories")
+public class SuccessStory {
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
@@ -43,16 +43,16 @@ public class JobPost {
     
 //  ----------------relationship with User-----------------------------
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="jobPostCreator_id")
-    private User jobPostCreator;
+    @JoinColumn(name="successStoryCreator_id")
+    private User successStoryCreator;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-        name = "commenters_jobPosts", 
-        joinColumns = @JoinColumn(name = "jobPost_id"), 
-        inverseJoinColumns = @JoinColumn(name = "jobPostCommenter_id")
+        name = "commenters_successStories", 
+        joinColumns = @JoinColumn(name = "successStory_id"), 
+        inverseJoinColumns = @JoinColumn(name = "successStoryCommenter_id")
     )
-    private List<User> jobPostCommenters;
+    private List<User> successStoryCommenters;
     
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -70,9 +70,9 @@ public class JobPost {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-
-    public JobPost() {}
     
+    public SuccessStory() {}
+
 	public Long getId() {
 		return id;
 	}
@@ -82,14 +82,14 @@ public class JobPost {
 	public String getTitle() {
 		return title;
 	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
 	public String getHeadline() {
 		return headline;
 	}
 	public void setHeadline(String headline) {
 		this.headline = headline;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getDescription() {
 		return description;
@@ -109,16 +109,16 @@ public class JobPost {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public User getJobPostCreator() {
-		return jobPostCreator;
+	public User getSuccessStoryCreator() {
+		return successStoryCreator;
 	}
-	public void setJobPostCreator(User jobPostCreator) {
-		this.jobPostCreator = jobPostCreator;
+	public void setSuccessStoryCreator(User successStoryCreator) {
+		this.successStoryCreator = successStoryCreator;
 	}
-	public List<User> getJobPostCommenters() {
-		return jobPostCommenters;
+	public List<User> getSuccessStoryCommenters() {
+		return successStoryCommenters;
 	}
-	public void setJobPostCommenters(List<User> jobPostCommenters) {
-		this.jobPostCommenters = jobPostCommenters;
+	public void setSuccessStoryCommenters(List<User> successStoryCommenters) {
+		this.successStoryCommenters = successStoryCommenters;
 	}
 }

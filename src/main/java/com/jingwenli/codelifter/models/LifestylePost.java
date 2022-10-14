@@ -22,9 +22,9 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="jobPosts")
-public class JobPost {
-
+@Table(name="lifestylePosts")
+public class LifestylePost {
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
@@ -43,16 +43,17 @@ public class JobPost {
     
 //  ----------------relationship with User-----------------------------
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="jobPostCreator_id")
-    private User jobPostCreator;
+    @JoinColumn(name="lifestylePostCreator_id")
+    private User lifestylePostCreator;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-        name = "commenters_jobPosts", 
-        joinColumns = @JoinColumn(name = "jobPost_id"), 
-        inverseJoinColumns = @JoinColumn(name = "jobPostCommenter_id")
+        name = "commenters_lifestylePosts", 
+        joinColumns = @JoinColumn(name = "lifestylePost_id"), 
+        inverseJoinColumns = @JoinColumn(name = "lifestylePostCommenter_id")
     )
-    private List<User> jobPostCommenters;
+    private List<User> lifestylePostCommenters;
+    
     
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -70,8 +71,8 @@ public class JobPost {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-
-    public JobPost() {}
+    
+    public LifestylePost() {}
     
 	public Long getId() {
 		return id;
@@ -109,16 +110,16 @@ public class JobPost {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public User getJobPostCreator() {
-		return jobPostCreator;
+	public User getLifestylePostCreator() {
+		return lifestylePostCreator;
 	}
-	public void setJobPostCreator(User jobPostCreator) {
-		this.jobPostCreator = jobPostCreator;
+	public void setLifestylePostCreator(User lifestylePostCreator) {
+		this.lifestylePostCreator = lifestylePostCreator;
 	}
-	public List<User> getJobPostCommenters() {
-		return jobPostCommenters;
+	public List<User> getLifestylePostCommenters() {
+		return lifestylePostCommenters;
 	}
-	public void setJobPostCommenters(List<User> jobPostCommenters) {
-		this.jobPostCommenters = jobPostCommenters;
+	public void setLifestylePostCommenters(List<User> lifestylePostCommenters) {
+		this.lifestylePostCommenters = lifestylePostCommenters;
 	}
 }
