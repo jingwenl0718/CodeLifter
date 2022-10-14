@@ -1,11 +1,8 @@
 package com.jingwenli.codelifter.services;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
 
 import com.jingwenli.codelifter.models.User;
 import com.jingwenli.codelifter.repositories.RoleRepository;
@@ -42,14 +39,6 @@ public class UserService {
    // 3
    public User findByEmail(String email) {
        return userRepo.findByEmail(email);
-   }
-   
-   public void verifyEmail(User newUser, BindingResult result) {
-	   Optional<User> potentialUser = userRepo.findUsersByEmail(newUser.getEmail());
-	   
-	   if (potentialUser.isPresent()) {
-		   result.rejectValue("email", "Matches", "An account with this email already exists!");
-	   }
    }
    
 }
