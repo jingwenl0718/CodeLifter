@@ -32,8 +32,8 @@ public class User {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    @NotBlank(message="First name is required")
-    @Size(min=3, message="First name must be greater than 3 characters")
+    @NotBlank(message="User name is required")
+    @Size(min=3, message="User name must be greater than 3 characters")
     private String userName;
     
     @NotBlank(message="Email is required")
