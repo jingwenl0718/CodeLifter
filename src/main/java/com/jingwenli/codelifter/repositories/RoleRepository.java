@@ -5,10 +5,11 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.jingwenli.codelifter.models.JobPost;
+import com.jingwenli.codelifter.models.Role;
 
 @Repository
-public interface JobPostRepository extends CrudRepository<JobPost, Long> {
-
-	List<JobPost> findAll();
+public interface RoleRepository extends CrudRepository<Role, Long> {
+	
+    List<Role> findAll();
+	List<Role> findByName(String name);
 }

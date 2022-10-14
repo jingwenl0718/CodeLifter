@@ -22,8 +22,8 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="jobPosts")
-public class JobPost {
+@Table(name="interviewPrepPosts")
+public class InterviewPrepPost {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,16 +43,16 @@ public class JobPost {
     
 //  ----------------relationship with User-----------------------------
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="jobPostCreator_id")
-    private User jobPostCreator;
+    @JoinColumn(name="interviewPrepPostCreator_id")
+    private User InterviewPrepPostCreator;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-        name = "commenters_jobPosts", 
-        joinColumns = @JoinColumn(name = "jobPost_id"), 
-        inverseJoinColumns = @JoinColumn(name = "jobPostCommenter_id")
+        name = "commenters_interviewPrepPosts", 
+        joinColumns = @JoinColumn(name = "interviewPrepPost_id"), 
+        inverseJoinColumns = @JoinColumn(name = "interviewPrepPostCommenter_id")
     )
-    private List<User> jobPostCommenters;
+    private List<User> interviewPrepPostCommenters;
     
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -70,8 +70,8 @@ public class JobPost {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
-
-    public JobPost() {}
+    
+    public InterviewPrepPost() {}
     
 	public Long getId() {
 		return id;
@@ -109,16 +109,16 @@ public class JobPost {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public User getJobPostCreator() {
-		return jobPostCreator;
+	public User getInterviewPrepPostCreator() {
+		return InterviewPrepPostCreator;
 	}
-	public void setJobPostCreator(User jobPostCreator) {
-		this.jobPostCreator = jobPostCreator;
+	public void setInterviewPrepPostCreator(User interviewPrepPostCreator) {
+		InterviewPrepPostCreator = interviewPrepPostCreator;
 	}
-	public List<User> getJobPostCommenters() {
-		return jobPostCommenters;
+	public List<User> getInterviewPrepPostCommenters() {
+		return interviewPrepPostCommenters;
 	}
-	public void setJobPostCommenters(List<User> jobPostCommenters) {
-		this.jobPostCommenters = jobPostCommenters;
+	public void setInterviewPrepPostCommenters(List<User> interviewPrepPostCommenters) {
+		this.interviewPrepPostCommenters = interviewPrepPostCommenters;
 	}
 }
