@@ -7,14 +7,14 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>JobPost Dashboard</title>
+	<title>Interview Prep Post Dashboard</title>
 	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
 	<div class="container mt-5">
-		 <h1 class="text-center">All Job-related Posts</h1>
+		 <h1 class="text-center">All Interview-prep Posts</h1>
 		<div class="d-flex align-items-center justify-content-end">
-		 	<a class="btn btn-primary" href="/jobposts/new">+ new post</a>
+		 	<a class="btn btn-primary" href="/interviewposts/new">+ new post</a>
 		 	<a class="btn btn-warning" href="/home">Home</a>
 		 	<a class="btn btn-secondary" href="/logout">Log out</a>
 		</div>
@@ -27,11 +27,11 @@
 	   			</tr>
 	   		</thead>
 	   		<tbody>
-	   			<c:forEach var="eachJobPost" items="${allJobPostList}">
+	   			<c:forEach var="eachInterviewPrepPost" items="${allInterviewPrepPostList}">
 	   				<tr>
-	   					<td><a href="/jobposts/${eachJobPost.id }"><c:out value="${eachJobPost.title }"/></a></td>
-	   					<td><c:out value="${eachJobPost.headline }"/></td>
-						<td><c:out value="${eachJobPost.jobPostCreator. userName }"/></td>
+	   					<td><a href="/interviewposts/${eachInterviewPrepPost.id }"><c:out value="${eachInterviewPrepPost.title }"/></a></td>
+	   					<td><c:out value="${eachInterviewPrepPost.headline }"/></td>
+						<td><c:out value="${eachInterviewPrepPost.interviewPrepPostCreator. userName }"/></td>
 	   				</tr>
 	   			</c:forEach>
 	   		</tbody>

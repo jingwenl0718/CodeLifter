@@ -55,7 +55,7 @@ public class JobPostController {
     }
 	
 	@PostMapping("/jobposts/new")
-	public String processNewProject(@Valid @ModelAttribute("newJobPost") JobPost jobPost, BindingResult result) {
+	public String processNewJobPost(@Valid @ModelAttribute("newJobPost") JobPost jobPost, BindingResult result) {
 		if (result.hasErrors()) {
 			return "newJobPost.jsp";
 		} else {
@@ -66,7 +66,7 @@ public class JobPostController {
 	
 //	EDIT
 	@GetMapping("/jobposts/{id}/edit")
-	public String showEditProjectForm(@PathVariable("id") Long id, Model model, Principal principal, HttpSession session) {
+	public String showEditJobPostForm(@PathVariable("id") Long id, Model model, Principal principal, HttpSession session) {
 		String email = principal.getName();
 		User currentUser = userService.findByEmail(email);
         model.addAttribute("currentUser", currentUser );
@@ -83,7 +83,7 @@ public class JobPostController {
 	}
 	
 	@PutMapping("/jobposts/{id}/edit")
-	public String processEditProject(
+	public String processEditJobPost(
 			@Valid @ModelAttribute("newJobPost") JobPost jobPost, BindingResult result, @PathVariable("id") Long id) {
 		if (result.hasErrors()) {
 			return "editJobPost.jsp";
