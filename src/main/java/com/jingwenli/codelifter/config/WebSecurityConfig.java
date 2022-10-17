@@ -26,6 +26,7 @@ public class WebSecurityConfig {
 	            authorizeRequests()
 	                .antMatchers("/css/**", "/js/**", "/registration").permitAll()
 	                .antMatchers("/admin/**").access("hasRole('ADMIN')")
+	                .antMatchers("/jobposts/**").access("hasRole('USER')")
 	                .anyRequest().authenticated()
 	                .and()
 	            .formLogin()

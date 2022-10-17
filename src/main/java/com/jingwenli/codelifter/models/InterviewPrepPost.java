@@ -22,7 +22,7 @@ import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="interviewPrepPosts")
+@Table(name="interviewprepposts")
 public class InterviewPrepPost {
 
 	@Id
@@ -43,14 +43,14 @@ public class InterviewPrepPost {
     
 //  ----------------relationship with User-----------------------------
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="interviewPrepPostCreator_id")
-    private User InterviewPrepPostCreator;
+    @JoinColumn(name="interviewpreppostcreator_id")
+    private User interviewPrepPostCreator;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-        name = "commenters_interviewPrepPosts", 
-        joinColumns = @JoinColumn(name = "interviewPrepPost_id"), 
-        inverseJoinColumns = @JoinColumn(name = "interviewPrepPostCommenter_id")
+        name = "commenters_interviewprepposts", 
+        joinColumns = @JoinColumn(name = "interviewpreppost_id"), 
+        inverseJoinColumns = @JoinColumn(name = "interviewpreppostcommenter_id")
     )
     private List<User> interviewPrepPostCommenters;
     
@@ -110,10 +110,10 @@ public class InterviewPrepPost {
 		this.updatedAt = updatedAt;
 	}
 	public User getInterviewPrepPostCreator() {
-		return InterviewPrepPostCreator;
+		return interviewPrepPostCreator;
 	}
 	public void setInterviewPrepPostCreator(User interviewPrepPostCreator) {
-		InterviewPrepPostCreator = interviewPrepPostCreator;
+		this.interviewPrepPostCreator = interviewPrepPostCreator;
 	}
 	public List<User> getInterviewPrepPostCommenters() {
 		return interviewPrepPostCommenters;
