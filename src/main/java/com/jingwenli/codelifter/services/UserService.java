@@ -1,5 +1,8 @@
 package com.jingwenli.codelifter.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,4 +43,21 @@ public class UserService {
    public User findByEmail(String email) {
        return userRepo.findByEmail(email);
    }
+   
+   public List<User> allUsers() {
+	   return userRepo.findAll();
+   }
+   
+   public User updateUser(User user) {
+	   return userRepo.save(user);
+   }
+   
+   public User findById(Long Id) {
+	   Optional<User> potentialUser = userRepo.findById(Id);
+	   if (potentialUser.isPresent()) {
+	   		return potentialUser.get();
+	   }
+	   return null;
+   }
+   
 }

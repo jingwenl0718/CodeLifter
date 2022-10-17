@@ -71,6 +71,18 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
     
+    @Column(updatable=false)
+    @OneToMany(mappedBy="lead", fetch = FetchType.LAZY)
+    private List<StudyGroup> studyGroupsLed;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(
+			name = "users_study_groups",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "study_group_id")
+	)
+    private List<StudyGroup> studyGroups;
+    
     public User() {
     }
 
@@ -201,6 +213,18 @@ public class User {
 		this.commentededJobPosts = commentededJobPosts;
 	}
 	
+	public List<StudyGroup> getStudyGroupsLed() {
+		return studyGroupsLed;
+	}
+	public void setStudyGroupsLed(List<StudyGroup> studyGroupsLed) {
+		this.studyGroupsLed = studyGroupsLed;
+	}
+	public List<StudyGroup> getStudyGroups() {
+		return studyGroups;
+	}
+	public void setStudyGroups(List<StudyGroup> studyGroups) {
+		this.studyGroups = studyGroups;
+	}
 	public List<InterviewPrepPost> getCreatedInterviewPrepPosts() {
 		return createdInterviewPrepPosts;
 	}

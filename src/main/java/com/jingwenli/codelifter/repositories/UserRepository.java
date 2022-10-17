@@ -1,5 +1,6 @@
 package com.jingwenli.codelifter.repositories;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
@@ -15,5 +16,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
 	Optional<User> findUsersByEmail(String email);
 	
 	Optional<User> findByUserName(String userName);
+	
+	List<User> findAll();
 }
 
