@@ -54,14 +54,6 @@ public class UserController {
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
         return "loginPage.jsp";
-    }   
-    
-    @RequestMapping(value = {"/", "/home"})
-    public String home(Principal principal, Model model) {
-        // 1
-        String email = principal.getName();
-        model.addAttribute("currentUser", userService.findByEmail(email));
-        return "homePage.jsp";
     }
     
     @RequestMapping("/admin")
