@@ -11,7 +11,29 @@
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
-<body class="container mt-4">
+<body>
+	<div class="header">
+		<a href="/" class="logo">CodeLifer</a>
+		<div class="navbar">
+			<a href="/studygroups">Study Groups</a>
+			<a href="/dashboard/jobposts">Jobs</a>
+			<a href="/dashboard/interviewposts">Interview Prep</a>
+			<a href="/dashboard/lifestyleposts">LifeStyle</a>
+			<a href="/dashboard/successstories">Success Stores</a>
+			<a href="#contactus">Contact Us</a>
+		</div>
+		<div>
+			<a href="/login" class="btn btn-login">Login</a>
+			<a href="/registration " class="btn btn-signup">Sign Up</a>
+		</div>
+	</div>
+	<div class="topper"></div>
+	
+	<div class="home-banner">
+		<h1>Trying to break into software <br /> development?</h1>
+		<h3>Come and Join us!</h3>
+	</div>
+
 	<h1>Welcome, <c:out value="${currentUser.userName}"></c:out></h1>
     
     <form id="logoutForm" method="POST" action="/logout">

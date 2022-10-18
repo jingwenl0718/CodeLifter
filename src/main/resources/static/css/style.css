@@ -1,6 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Damion&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Damion&family=Open+Sans:ital,wght@1,700&display=swap');
+
+:root {
+    --orche:#c17817;
+    --eggplant:#75485e;
+    --teal:#0e7c7b;
+}
+
 .col-1 {
 	flex: 1;
 }
 .col-5 {
 	flex: 5;
+}
+
+* {
+    font-family: 'Nunito', sans-serif;
+    margin: 0; padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    outline: none; border: none;
+    text-decoration: none;
+    transition: all .2s linear;
+}
+
+html {
+    font-size: 100%;
+    overflow-x: hidden;
+    scroll-padding-top: 6rem;
+    scroll-behavior: smooth;
+}
+
+.topper {
+	height: 120px;
+}
+
+.header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    color: #333;
+    background-color: white;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 9%;
+}
+
+.header .logo {
+	font-family: 'Damion', cursive;
+    font-size: 2.5rem;
+    font-weight: bolder;
+    color: var(--orche);
+    text-decoration: none;
+}
+
+.header .navbar a {
+    color: black;
+    font-size: 1.2rem;
+    margin: 0 .8rem;
+    text-decoration: none;
+}
+
+.header .navbar a:hover {
+    color: var(--orche);
+}
+
+.btn-login {
+    display: inline-block;
+    background-color: var(--eggplant);
+    color: white;
+    padding: .45rem 1.7rem;
+    border: .2rem solid var(--eggplant);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.btn-signup {
+    display: inline-block;
+    background-color: var(--teal);
+    color: white;
+    padding: .45rem 1.7rem;
+    border: .2rem solid var(--teal);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.home-banner {
+	height: 450px;
+	background-color: #D5D6D7;
+	padding-top: 125px;
+}
+
+.home-banner h1 {
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 45px;
+}
+
+.home-banner h3 {
+	color: #798da3;
+	text-align: center;
+	font-family: 'Open Sans', sans-serif;
 }
