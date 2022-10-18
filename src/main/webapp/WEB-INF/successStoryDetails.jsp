@@ -16,8 +16,18 @@
 	   		<h1 class="mr-5"><c:out value="${oneSuccessStory.title }"/></h1>
 	   		<a class="btn btn-warning" href="/dashboard/successstories">Success Story Dashboard</a>
 	   	</div>
-	   	
-	   	<h5 class="text-secondary fw-light fst-italic">(Posted by <c:out value="${oneSuccessStory.successStoryCreator.userName }"/> )</h5>
+	   	<img src="<c:url value='${oneSuccessStory.photosImagePath}'></c:url>" alt="image" class="details_image"/>
+		<div class="d-flex align-items-center">
+	   		<h5 class="text-secondary fw-light fst-italic mr-5">(Posted by <c:out value="${oneSuccessStory.successStoryCreator.userName }"/> )</h5>
+			<c:choose>
+				<c:when test="${oneSuccessStory.updatedAt != null }">
+					<h5 class="ml-5"><fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneSuccessStory.updatedAt }"/></h5>
+				</c:when>
+				<c:otherwise>
+					<h5 class="ml-5"><fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneSuccessStory.createdAt }"/></h5>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	   	<h4 class="mt-3"><c:out value="${oneSuccessStory.headline }"/></h4>
 	   	<p class="mt-3"><c:out value="${oneSuccessStory.description }"/></p>
 	   	<hr/>

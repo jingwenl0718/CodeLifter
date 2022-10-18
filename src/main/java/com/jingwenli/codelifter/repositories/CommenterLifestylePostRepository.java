@@ -6,9 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.jingwenli.codelifter.models.CommenterLifestylePost;
+import com.jingwenli.codelifter.models.LifestylePost;
 
 @Repository
 public interface CommenterLifestylePostRepository extends CrudRepository<CommenterLifestylePost, Long> {
 
-	List<CommenterLifestylePost> findAll();
+	List<CommenterLifestylePost> findAllByLifestylePost(LifestylePost lifestylePost);
 }

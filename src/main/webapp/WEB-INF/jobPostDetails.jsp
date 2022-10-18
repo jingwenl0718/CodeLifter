@@ -16,8 +16,18 @@
 	   		<h1 class="mr-5"><c:out value="${oneJobPost.title }"/></h1>
 	   		<a class="btn btn-warning" href="/dashboard/jobposts">Job Dashboard</a>
 	   	</div>
-	   	
-	   	<h5 class="text-secondary fw-light fst-italic">(Posted by <c:out value="${oneJobPost.jobPostCreator.userName }"/> )</h5>
+	   	<img src="<c:url value='${oneJobPost.photosImagePath}'></c:url>" alt="image" class="details_image"/>
+		<div class="d-flex align-items-center">
+	   		<h5 class="text-secondary fw-light fst-italic mr-5">(Posted by <c:out value="${oneJobPost.jobPostCreator.userName }"/> )</h5>
+			<c:choose>
+				<c:when test="${oneJobPost.updatedAt != null }">
+					<h5 class="ml-5"><fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneJobPost.updatedAt }"/></h5>
+				</c:when>
+				<c:otherwise>
+					<h5 class="ml-5"><fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneJobPost.createdAt }"/></h5>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	   	<h4 class="mt-3"><c:out value="${oneJobPost.headline }"/></h4>
 	   	<p class="mt-3"><c:out value="${oneJobPost.description }"/></p>
 	   	<hr/>

@@ -1,5 +1,6 @@
 package com.jingwenli.codelifter.controllers;
 
+import java.io.IOException;
 import java.security.Principal;
 
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jingwenli.codelifter.models.CommenterSuccessStory;
 import com.jingwenli.codelifter.models.SuccessStory;
 import com.jingwenli.codelifter.models.User;
 import com.jingwenli.codelifter.services.CommenterSuccessStoryService;
+import com.jingwenli.codelifter.services.FileUploadUtil;
 import com.jingwenli.codelifter.services.SuccessStoryService;
 import com.jingwenli.codelifter.services.UserService;
 
@@ -51,7 +56,8 @@ public class SuccessStoryController {
         model.addAttribute("currentUser", currentUser );
 		model.addAttribute("oneSuccessStory", successStoryService.findOneSuccessStory(id));
 		model.addAttribute("newComment", new CommenterSuccessStory());
-		model.addAttribute("allCommentList", commenterSuccessStoryService.findAllComments());
+        SuccessStory foundPost = successStoryService.findOneSuccessStory(id);
+		model.addAttribute("allCommentList", commenterSuccessStoryService.findAllCommentsByPost(foundPost));
 		return "successStoryDetails.jsp";
 	}
 	
@@ -68,11 +74,16 @@ public class SuccessStoryController {
     }
 	
 	@PostMapping("/successstories/new")
-	public String processNewSuccessStory(@Valid @ModelAttribute("newSuccessStory") SuccessStory successStory, BindingResult result) {
-		if (result.hasErrors()) {
+	public String processNewSuccessStory(@Valid @ModelAttribute("newSuccessStory") SuccessStory successStory, BindingResult result, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+		
+		if (result.hasFieldErrors("title") || result.hasFieldErrors("headline") || result.hasFieldErrors("description")) {
 			return "newSuccessStory.jsp";
 		} else {
-			successStoryService.createNewSuccessStory(successStory);
+			String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+			successStory.setImage(fileName);
+			SuccessStory savedPost = successStoryService.createNewSuccessStory(successStory);
+	        String uploadDir = "src/main/resources/static/successstory-image/" + savedPost.getId();
+	        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 			return "redirect:/dashboard/successstories";
 		}
 	}
@@ -120,8 +131,9 @@ public class SuccessStoryController {
 			String email = principal.getName();
 			User currentUser = userService.findByEmail(email);
 	        model.addAttribute("currentUser", currentUser );
-			model.addAttribute("oneSuccessStory", successStoryService.findOneSuccessStory(id));
-			model.addAttribute("allCommentList", commenterSuccessStoryService.findAllComments());
+	        SuccessStory foundPost = successStoryService.findOneSuccessStory(id);
+			model.addAttribute("oneSuccessStory", foundPost);
+			model.addAttribute("allCommentList", commenterSuccessStoryService.findAllCommentsByPost(foundPost));
 			return "successStoryDetails.jsp";
 		} else {
 			commenterSuccessStoryService.createNewComment(commenterSuccessStory);

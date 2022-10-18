@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jingwenli.codelifter.models.CommenterSuccessStory;
+import com.jingwenli.codelifter.models.SuccessStory;
 import com.jingwenli.codelifter.repositories.CommenterSuccessStoryRepository;
 
 @Service
@@ -15,8 +16,8 @@ public class CommenterSuccessStoryService {
 	private CommenterSuccessStoryRepository commenterSuccessStoryRepo;
 	
 //	FIND ALL
-	public List<CommenterSuccessStory> findAllComments() {
-		return commenterSuccessStoryRepo.findAll();
+	public List<CommenterSuccessStory> findAllCommentsByPost(SuccessStory successStory) {
+		return commenterSuccessStoryRepo.findAllBySuccessStory(successStory);
 	}
 	
 //	CREATE

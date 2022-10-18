@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jingwenli.codelifter.models.CommenterJobPost;
+import com.jingwenli.codelifter.models.JobPost;
 import com.jingwenli.codelifter.repositories.CommenterJobPostRepository;
 
 @Service
@@ -15,8 +16,8 @@ public class CommenterJobPostService {
 	private CommenterJobPostRepository commenterJobPostRepo;
 	
 //	FIND ALL
-	public List<CommenterJobPost> findAllComments() {
-		return commenterJobPostRepo.findAll();
+	public List<CommenterJobPost> findAllCommentsByPost(JobPost jobPost) {
+		return commenterJobPostRepo.findAllByJobPost(jobPost);
 	}
 	
 //	CREATE
