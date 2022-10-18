@@ -1,3 +1,11 @@
 .details_image {
 	width: 40%;
 }
+
+.col-1 {
+	flex: 1;
+}
+
+.col-5 {
+	flex: 5;
+}
