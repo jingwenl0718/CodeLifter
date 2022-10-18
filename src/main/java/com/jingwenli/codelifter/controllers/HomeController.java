@@ -14,7 +14,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jingwenli.codelifter.models.Contact;
+import com.jingwenli.codelifter.services.InterviewPrepPostService;
+import com.jingwenli.codelifter.services.JobPostService;
+import com.jingwenli.codelifter.services.LifestylePostService;
 import com.jingwenli.codelifter.services.MailService;
+import com.jingwenli.codelifter.services.SuccessStoryService;
 import com.jingwenli.codelifter.services.UserService;
 
 @Controller
@@ -27,6 +31,18 @@ public class HomeController {
 	MailService mailService;
 	
 	@Autowired
+	JobPostService jobPostService;
+	
+	@Autowired
+	InterviewPrepPostService interviewPrepPostService;
+	
+	@Autowired
+	LifestylePostService lifestylePostService;
+	
+	@Autowired
+	SuccessStoryService successStoryService;
+	
+	@Autowired
 	Environment env;
 	
     @RequestMapping(value = {"/", "/home"})
@@ -35,6 +51,10 @@ public class HomeController {
         String email = principal.getName();
         model.addAttribute("currentUser", userService.findByEmail(email));
         model.addAttribute("newContact", new Contact());
+        model.addAttribute("recentJobPost", jobPostService.findRecentPost());
+        model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
+        model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
+        model.addAttribute("recentSuccessStory", successStoryService.findRecentPost());
         return "homePage.jsp";
     }
     

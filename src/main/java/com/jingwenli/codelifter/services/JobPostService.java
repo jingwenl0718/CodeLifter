@@ -45,4 +45,9 @@ public class JobPostService {
 		jobPostRepo.deleteById(id);
 	}
 	
+//	FIND MOST RECENT POST
+	public JobPost findRecentPost() {
+		List<JobPost> postList = jobPostRepo.findRecentPost();
+		return postList.get(0);
+	}
 }

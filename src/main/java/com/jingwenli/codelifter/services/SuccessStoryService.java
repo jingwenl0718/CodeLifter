@@ -44,4 +44,10 @@ public class SuccessStoryService {
 	public void deleteSuccessStory(Long id) {
 		successStoryRepo.deleteById(id);
 	}
+	
+//	FIND MOST RECENT POST
+	public SuccessStory findRecentPost() {
+		List<SuccessStory> postList = successStoryRepo.findRecentPost();
+		return postList.get(0);
+	}
 }

@@ -44,4 +44,10 @@ public class LifestylePostService {
 	public void deleteLifestylePost(Long id) {
 		lifestylePostRepo.deleteById(id);
 	}
+	
+//	FIND MOST RECENT POST
+	public LifestylePost findRecentPost() {
+		List<LifestylePost> postList = lifestylePostRepo.findRecentPost();
+		return postList.get(0);
+	}
 }

@@ -44,4 +44,10 @@ public class InterviewPrepPostService {
 	public void deleteInterviewPrepPost(Long id) {
 		interviewPrepPostRepo.deleteById(id);
 	}
+	
+//	FIND MOST RECENT POST
+	public InterviewPrepPost findRecentPost() {
+		List<InterviewPrepPost> postList = interviewPrepPostRepo.findRecentPost();
+		return postList.get(0);
+	}
 }
