@@ -13,7 +13,7 @@
 <body>
 	<div class="container mt-5">
 	   <h1>Create a Lifestyle Post</h1>
-	   <form:form action="/lifestyleposts/new" method="POST" modelAttribute="newLifestylePost" class="form col-7 mt-5">
+	   <form:form action="/lifestyleposts/new" method="POST" enctype="multipart/form-data" modelAttribute="newLifestylePost" class="form col-7 mt-5">
 	   		<p>
 	   			<form:label class="h5" path="title">Title: </form:label>
 	   			<form:input class="ml-5 form-control" path="title"/>
@@ -25,9 +25,13 @@
 	   			<form:errors style="color:red" path="headline"/>
 	   		</p>
 	   		<p>
-	   			<form:label class="h5" path="description">Job Description: </form:label>
+	   			<form:label class="h5" path="description">Description: </form:label>
 	   			<form:textarea cols="30" rows="10" class="form-control" path="description"/>
 	   			<form:errors style="color:red" path="description"/>
+	   		</p>
+	   		<p>
+	   			<form:label class="h5" path="image">Image: </form:label>
+	   			<form:input type="file" path="image" accept="image/png, image/jpeg"/>	   		
 	   		</p>
 	   		<form:hidden path="lifestylePostCreator" value="${currentUser.id}"/>
 	   		<div class="d-flex justify-content-end">

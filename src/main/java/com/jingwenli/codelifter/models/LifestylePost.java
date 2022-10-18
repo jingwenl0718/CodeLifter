@@ -16,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -40,6 +41,15 @@ public class LifestylePost {
     @NotNull
     @Size(min = 10, max = 1000, message="Description must be least 10 characters")
     private String description;
+    
+    @Column(nullable = true, length = 64)
+    private String image;
+    
+	@Transient
+    public String getPhotosImagePath() {
+        if (image == null || id == null) return null;
+        return "/lifestylepost-image/" + id + "/" + image;
+    }
     
 //  ----------------relationship with User-----------------------------
     @ManyToOne(fetch = FetchType.LAZY)
@@ -96,6 +106,13 @@ public class LifestylePost {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public String getImage() {
+		return image;
+	}
+	
+	public void setImage(String image) {
+		this.image = image;
 	}
 	public Date getCreatedAt() {
 		return createdAt;
