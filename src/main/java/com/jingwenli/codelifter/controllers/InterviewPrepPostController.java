@@ -1,5 +1,6 @@
 package com.jingwenli.codelifter.controllers;
 
+import java.io.IOException;
 import java.security.Principal;
 
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,12 +17,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jingwenli.codelifter.models.CommenterInterviewPrepPost;
-import com.jingwenli.codelifter.models.CommenterJobPost;
 import com.jingwenli.codelifter.models.InterviewPrepPost;
 import com.jingwenli.codelifter.models.User;
 import com.jingwenli.codelifter.services.CommenterInterviewPrepPostService;
+import com.jingwenli.codelifter.services.FileUploadUtil;
 import com.jingwenli.codelifter.services.InterviewPrepPostService;
 import com.jingwenli.codelifter.services.UserService;
 
@@ -56,11 +60,16 @@ public class InterviewPrepPostController {
     }
 	
 	@PostMapping("/interviewposts/new")
-	public String processNewInterviewPrepPost(@Valid @ModelAttribute("newInterviewPrepPost") InterviewPrepPost interviewPrepPost, BindingResult result) {
-		if (result.hasErrors()) {
+	public String processNewInterviewPrepPost(@Valid @ModelAttribute("newInterviewPrepPost") InterviewPrepPost interviewPrepPost, BindingResult result, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+        
+		if (result.hasFieldErrors("title") || result.hasFieldErrors("headline") || result.hasFieldErrors("description")) {
 			return "newInterviewPrepPost.jsp";
 		} else {
-			interviewPrepPostService.createNewInterviewPrepPost(interviewPrepPost);
+			String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+			interviewPrepPost.setImage(fileName);
+			InterviewPrepPost savedPost = interviewPrepPostService.createNewInterviewPrepPost(interviewPrepPost);
+	        String uploadDir = "src/main/resources/static/interviewpost-image/" + savedPost.getId();
+	        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 			return "redirect:/dashboard/interviewposts";
 		}
 	}
@@ -96,13 +105,14 @@ public class InterviewPrepPostController {
 	
 //	FIND ONE
 	@GetMapping("/interviewposts/{id}")
-	public String showJobPostDetails(@PathVariable("id") Long id, Model model, Principal principal) {
+	public String showInterviewPrepPostDetails(@PathVariable("id") Long id, Model model, Principal principal) {
 		String email = principal.getName();
 		User currentUser = userService.findByEmail(email);
         model.addAttribute("currentUser", currentUser );
 		model.addAttribute("oneInterviewPrepPost", interviewPrepPostService.findOneInterviewPrepPost(id));
 		model.addAttribute("newComment", new CommenterInterviewPrepPost());
-		model.addAttribute("allCommentList", commenterInterviewPrepPostService.findAllComments());
+		InterviewPrepPost foundPost = interviewPrepPostService.findOneInterviewPrepPost(id);
+		model.addAttribute("allCommentList", commenterInterviewPrepPostService.findAllCommentsByPost(foundPost));
 		return "interviewPrepPostDetails.jsp";
 	}
 	
@@ -120,8 +130,9 @@ public class InterviewPrepPostController {
 			String email = principal.getName();
 			User currentUser = userService.findByEmail(email);
 	        model.addAttribute("currentUser", currentUser );
-			model.addAttribute("oneInterviewPrepPost", interviewPrepPostService.findOneInterviewPrepPost(id));
-			model.addAttribute("allCommentList", commenterInterviewPrepPostService.findAllComments());
+	        InterviewPrepPost foundPost = interviewPrepPostService.findOneInterviewPrepPost(id);
+			model.addAttribute("oneInterviewPrepPost", foundPost);
+			model.addAttribute("allCommentList", commenterInterviewPrepPostService.findAllCommentsByPost(foundPost));
 			return "interviewPrepPostDetails.jsp";
 		} else {
 			commenterInterviewPrepPostService.createNewComment(commenterInterviewPrepPost);

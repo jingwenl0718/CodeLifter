@@ -30,6 +30,7 @@
 	   			<form:textarea cols="30" rows="10" class="form-control" path="description"/>
 	   			<form:errors style="color:red" path="description"/>
 	   		</p>
+	   		<form:hidden path="image"/>
 	   		<form:hidden path="interviewPrepPostCreator"/>
 	   		<div class="d-flex justify-content-end">
 		   		<a class="btn btn-secondary" href="/dashboard/interviewposts">Cancel</a>

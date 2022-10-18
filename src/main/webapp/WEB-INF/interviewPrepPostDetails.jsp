@@ -8,6 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Interview Prep Post Details</title>
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
 	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
 </head>
 <body>
@@ -16,23 +17,31 @@
 	   		<h1 class="mr-5"><c:out value="${oneInterviewPrepPost.title }"/></h1>
 	   		<a class="btn btn-warning" href="/dashboard/interviewposts">Interview Prep Dashboard</a>
 	   	</div>
-	   	
-	   	<h5 class="text-secondary fw-light fst-italic">(Posted by <c:out value="${oneInterviewPrepPost.interviewPrepPostCreator.userName }"/> )</h5>
+		<img src="<c:url value='${oneInterviewPrepPost.photosImagePath}'></c:url>" alt="image" class="details_image"/>
+		<div class="d-flex align-items-center">
+	   		<h5 class="text-secondary fw-light fst-italic mr-5">(Posted by <c:out value="${oneInterviewPrepPost.interviewPrepPostCreator.userName }"/> )</h5>
+			<c:choose>
+				<c:when test="${oneInterviewPrepPost.updatedAt != null }">
+					<h5 class="ml-5"><fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneInterviewPrepPost.updatedAt }"/></h5>
+				</c:when>
+				<c:otherwise>
+					<h5 class="ml-5"><fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneInterviewPrepPost.createdAt }"/></h5>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	   	<h4 class="mt-3"><c:out value="${oneInterviewPrepPost.headline }"/></h4>
 	   	<p class="mt-3"><c:out value="${oneInterviewPrepPost.description }"/></p>
 	   	<hr/>
-	    <c:choose>
-  			<c:when test="${currentUser.id.equals(oneInterviewPrepPost.interviewPrepPostCreator.id) }">
-				<div class="d-flex justify-content-end">
-					<a class="btn btn-primary" href="/interviewposts/${oneInterviewPrepPost.id }/edit">Edit</a>
-					<form action="/interviewposts/${oneInterviewPrepPost.id }/delete" method="POST">
-						<input type="hidden" name="_method" value="delete"/>
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-						<button class="btn btn-secondary" type="submit">Delete</button>	   								
-					</form>
-				</div>
-		   	</c:when>
-		</c:choose>
+		<c:if test="${currentUser.id.equals(oneInterviewPrepPost.interviewPrepPostCreator.id) }">
+			<div class="d-flex justify-content-end">
+				<a class="btn btn-primary" href="/interviewposts/${oneInterviewPrepPost.id }/edit">Edit</a>
+				<form action="/interviewposts/${oneInterviewPrepPost.id }/delete" method="POST">
+					<input type="hidden" name="_method" value="delete"/>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					<button class="btn btn-secondary" type="submit">Delete</button>	   								
+				</form>
+			</div>
+	   	</c:if>
 		<form:form action="/interviewposts/${oneInterviewPrepPost.id }/comment" method="POST" modelAttribute="newComment" class="form col-7 mt-5">
 	   		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/><p>
 	   			<form:label class="h5" path="content">Comment: </form:label>

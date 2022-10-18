@@ -1,5 +1,6 @@
 package com.jingwenli.codelifter.controllers;
 
+import java.io.IOException;
 import java.security.Principal;
 
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,11 +17,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.jingwenli.codelifter.models.CommenterLifestylePost;
+import com.jingwenli.codelifter.models.InterviewPrepPost;
 import com.jingwenli.codelifter.models.LifestylePost;
 import com.jingwenli.codelifter.models.User;
 import com.jingwenli.codelifter.services.CommenterLifestylePostService;
+import com.jingwenli.codelifter.services.FileUploadUtil;
 import com.jingwenli.codelifter.services.LifestylePostService;
 import com.jingwenli.codelifter.services.UserService;
 
@@ -50,7 +56,8 @@ public class LifestylePostController {
         model.addAttribute("currentUser", currentUser );
 		model.addAttribute("oneLifestylePost", lifestylePostService.findOneLifestylePost(id));
 		model.addAttribute("newComment", new CommenterLifestylePost());
-		model.addAttribute("allCommentList", commenterLifestylePostService.findAllComments());
+		LifestylePost foundPost = lifestylePostService.findOneLifestylePost(id);
+		model.addAttribute("allCommentList", commenterLifestylePostService.findAllCommentsByPost(foundPost));
 		return "lifestylePostDetails.jsp";
 	}
 	
@@ -67,11 +74,16 @@ public class LifestylePostController {
     }
 	
 	@PostMapping("/lifestyleposts/new")
-	public String processNewJobPost(@Valid @ModelAttribute("newLifestylePost") LifestylePost lifestylePost, BindingResult result) {
-		if (result.hasErrors()) {
+	public String processNewJobPost(@Valid @ModelAttribute("newLifestylePost") LifestylePost lifestylePost, BindingResult result, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+		
+		if (result.hasFieldErrors("title") || result.hasFieldErrors("headline") || result.hasFieldErrors("description")) {
 			return "newLifestylePost.jsp";
 		} else {
-			lifestylePostService.createNewLifestylePost(lifestylePost);
+			String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+			lifestylePost.setImage(fileName);
+			LifestylePost savedPost = lifestylePostService.createNewLifestylePost(lifestylePost);
+	        String uploadDir = "src/main/resources/static/lifestylepost-image/" + savedPost.getId();
+	        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 			return "redirect:/dashboard/lifestyleposts";
 		}
 	}
@@ -119,8 +131,9 @@ public class LifestylePostController {
 			String email = principal.getName();
 			User currentUser = userService.findByEmail(email);
 	        model.addAttribute("currentUser", currentUser );
-			model.addAttribute("oneLifestylePost", lifestylePostService.findOneLifestylePost(id));
-			model.addAttribute("allCommentList", commenterLifestylePostService.findAllComments());
+	        LifestylePost foundPost = lifestylePostService.findOneLifestylePost(id);
+			model.addAttribute("oneLifestylePost", foundPost);
+			model.addAttribute("allCommentList", commenterLifestylePostService.findAllCommentsByPost(foundPost));
 			return "lifestylePostDetails.jsp";
 		} else {
 			commenterLifestylePostService.createNewComment(commenterLifestylePost);

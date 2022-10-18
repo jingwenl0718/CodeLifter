@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jingwenli.codelifter.models.CommenterInterviewPrepPost;
+import com.jingwenli.codelifter.models.InterviewPrepPost;
 import com.jingwenli.codelifter.repositories.CommenterInterviewPrepPostRepository;
 
 @Service
@@ -15,8 +16,8 @@ public class CommenterInterviewPrepPostService {
 	private CommenterInterviewPrepPostRepository commenterInterviewPrepPostRepo;
 	
 //	FIND ALL
-	public List<CommenterInterviewPrepPost> findAllComments() {
-		return commenterInterviewPrepPostRepo.findAll();
+	public List<CommenterInterviewPrepPost> findAllCommentsByPost(InterviewPrepPost interviewPrepPost) {
+		return commenterInterviewPrepPostRepo.findAllByInterviewPrepPost(interviewPrepPost);
 	}
 	
 //	CREATE
