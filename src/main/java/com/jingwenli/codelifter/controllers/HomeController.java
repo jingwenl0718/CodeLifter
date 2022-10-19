@@ -18,6 +18,7 @@ import com.jingwenli.codelifter.services.InterviewPrepPostService;
 import com.jingwenli.codelifter.services.JobPostService;
 import com.jingwenli.codelifter.services.LifestylePostService;
 import com.jingwenli.codelifter.services.MailService;
+import com.jingwenli.codelifter.services.StudyGroupService;
 import com.jingwenli.codelifter.services.SuccessStoryService;
 import com.jingwenli.codelifter.services.UserService;
 
@@ -43,19 +44,34 @@ public class HomeController {
 	SuccessStoryService successStoryService;
 	
 	@Autowired
+	StudyGroupService studyService;
+	
+	@Autowired
 	Environment env;
 	
     @RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model) {
         // 1
-        String email = principal.getName();
-        model.addAttribute("currentUser", userService.findByEmail(email));
-        model.addAttribute("newContact", new Contact());
-        model.addAttribute("recentJobPost", jobPostService.findRecentPost());
-        model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
-        model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
-        model.addAttribute("recentSuccessStory", successStoryService.findRecentPost());
-        return "homePage.jsp";
+    	if (principal == null) {
+            model.addAttribute("newContact", new Contact());
+            model.addAttribute("recentJobPost", jobPostService.findRecentPost());
+            model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
+            model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
+            model.addAttribute("recentSuccessStory", successStoryService.findRecentPost());
+            model.addAttribute("recentStudyGroupPost", studyService.findRecentPost());
+    		return "homePage.jsp";
+    	}
+    	else {
+            String email = principal.getName();
+            model.addAttribute("currentUser", userService.findByEmail(email));
+            model.addAttribute("newContact", new Contact());
+            model.addAttribute("recentJobPost", jobPostService.findRecentPost());
+            model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
+            model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
+            model.addAttribute("recentSuccessStory", successStoryService.findRecentPost());
+            model.addAttribute("recentStudyGroupPost", studyService.findRecentPost());
+            return "homePage.jsp";
+    	}
     }
     
     @PostMapping("/home/contactus")

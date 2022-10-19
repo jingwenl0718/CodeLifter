@@ -61,4 +61,8 @@ public class StudyGroupService {
 		return studyRepo.findByUsersNotContains(user);
 	}
 	
+	public StudyGroup findRecentPost() {
+		List<StudyGroup> postList = studyRepo.findRecentPost();
+		return postList.get(0);
+	}
 }

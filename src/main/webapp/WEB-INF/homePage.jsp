@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isErrorPage="true" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -105,56 +106,67 @@
 				
 				<div class="swiper-slide">
 					<div class="box">
-						<img src="src\main\resources\static\successstory-image\6\success_story_4.jpeg" alt="Study Groups" />
-						<p class="recent-date">October 18th, 2022 by user1</p>
-						<h3>Post 1</h3>
-						<p class="content">Content</p>
+						<img src="<c:url value='${recentJobPost.photosImagePath}'></c:url>" alt="Job Post" />
+						<div class="post-type">Job Posts</div>
+						<p class="recent-date"><fmt:formatDate pattern="MMM dd, yyyy hh:mm a" type="both" value="${recentJobPost.createdAt }"/>
+						by <c:out value="${recentJobPost.jobPostCreator.userName }" /></p>
+						<h3><c:out value="${recentJobPost.title}" /></h3>
+						<p class="content"><c:out value="${recentJobPost.headline}" /></p>
 						<div class="link">
-							<a href="">Read More</a>
+							<a href="/jobposts/${recentJobPost.id}">Read More</a>
 						</div>
 					</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="box">
-						<img src="src\main\resources\static\successstory-image\6\success_story_4.jpeg" alt="Study Groups" />
-						<p class="recent-date">October 18th, 2022 by user1</p>
-						<h3>Post 2</h3>
-						<p class="content">Content</p>
+						<img src="<c:url value='${recentInterviewPost.photosImagePath}'></c:url>" alt="Interview Post" />
+						<div class="post-type">Interview Prep</div>
+						<p class="recent-date"><fmt:formatDate pattern="MMM dd, yyyy hh:mm a" type="both" value="${recentInterviewPost.createdAt }"/>
+						by <c:out value="${recentInterviewPost.interviewPrepPostCreator.userName }" /></p>
+						<h3><c:out value="${recentInterviewPost.title}" /></h3>
+						<p class="content"><c:out value="${recentInterviewPost.headline}" /></p>
 						<div class="link">
-							<a href="">Read More</a>
+							<a href="/interviewposts/${recentInterviewPost.id}">Read More</a>
 						</div>
 					</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="box">
-						<img src="src\main\resources\static\successstory-image\6\success_story_4.jpeg" alt="Study Groups" />
-						<p class="recent-date">October 18th, 2022 by user1</p>
-						<h3>Post 3</h3>
-						<p class="content">Content</p>
+						<img src="<c:url value='${recentLifestylePost.photosImagePath}'></c:url>" alt="Lifestyle Post" />
+						<div class="post-type">Life Style</div>
+						<p class="recent-date"><fmt:formatDate pattern="MMM dd, yyyy hh:mm a" type="both" value="${recentLifestylePost.createdAt }"/>
+						by <c:out value="${recentLifestylePost.lifestylePostCreator.userName }" /></p>
+						<h3><c:out value="${recentLifestylePost.title}" /></h3>
+						<p class="content"><c:out value="${recentLifestylePost.headline}" /></p>
 						<div class="link">
-							<a href="">Read More</a>
+							<a href="/lifestyleposts/${recentLifestylePost.id}">Read More</a>
 						</div>
 					</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="box">
-						<img src="src\main\resources\static\successstory-image\6\success_story_4.jpeg" alt="Study Groups" />
-						<p class="recent-date">October 18th, 2022 by user1</p>
-						<h3>Post 4</h3>
-						<p class="content">Content</p>
+						<img src="<c:url value='${recentSuccessStory.photosImagePath}'></c:url>" alt="Success Stories" />
+						<div class="post-type">Success Stories</div>
+						<p class="recent-date"><fmt:formatDate pattern="MMM dd, yyyy hh:mm a" type="both" value="${recentSuccessStory.createdAt }"/>
+						by <c:out value="${recentSuccessStory.successStoryCreator.userName }" /></p>
+						<h3><c:out value="${recentSuccessStory.title}" /></h3>
+						<p class="content"><c:out value="${recentSuccessStory.headline}" /></p>
 						<div class="link">
-							<a href="">Read More</a>
+							<a href="/successstories/${recentSuccessStory.id}">Read More</a>
 						</div>
 					</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="box">
-						<img src="src\main\resources\static\successstory-image\6\success_story_4.jpeg" alt="Study Groups" />
-						<p class="recent-date">October 18th, 2022 by user1</p>
-						<h3>Post 5</h3>
-						<p class="content">Content</p>
+						<img src="https://www.princetonreview.com/cms-content/how-to-make-the-most-out-of-mcat-study-group.jpg" alt="Study Group Post" />
+						<div class="post-type">Most Recent Study Groups</div>
+						<p class="recent-date"><fmt:formatDate pattern="MMM dd, yyyy hh:mm a" type="both" value="${recentStudyGroupPost.createdAt }"/>
+						by <c:out value="${recentStudyGroupPost.lead.userName}" /></p>
+						<h3><c:out value="${recentStudyGroupPost.studyCategory}" /></h3>
+						<p class="content">When? <fmt:formatDate pattern="MMM dd, yyyy" type="both" value="${recentStudyGroupPost.studyDate }"/>
+						at <fmt:formatDate pattern="hh:mm a" type="both" value="${recentStudyGroupPost.studyDate }"/></p>
 						<div class="link">
-							<a href="">Read More</a>
+							<a href="/studygroups/${recentStudyGroupPost.id}">Read More</a>
 						</div>
 					</div>
 				</div>

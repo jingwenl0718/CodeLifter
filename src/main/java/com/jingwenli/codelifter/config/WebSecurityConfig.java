@@ -24,13 +24,18 @@ public class WebSecurityConfig {
 		
 		http.
 	            authorizeRequests()
-	                .antMatchers("/css/**", "/js/**", "/registration").permitAll()
+	                .antMatchers("/css/**", "/js/**", "/registration", "/", "/home", "/webjars/**", "/interviewpost-image/**",
+	                		"/jobpost-image/**", "/lifestylepost-image/**", "/successstory-image/**", 
+	                		"/src/main/resources/static/successstory-image/**",
+	                		"/src/main/resources/static/interviewpost-image/**",
+	                		"/src/main/resources/static/lifestylepost-image/**").permitAll()
 	                .antMatchers("/admin/**").access("hasRole('ADMIN')")
 	                .antMatchers("/jobposts/**").access("hasRole('USER')")
 	                .anyRequest().authenticated()
 	                .and()
 	            .formLogin()
 	                .loginPage("/login")
+	                
 	                .usernameParameter("email")
 	                .permitAll()
 	                .and()
