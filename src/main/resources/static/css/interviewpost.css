@@ -1,0 +1,91 @@
+.body-main {
+	margin-top: 100px;
+}
+
+.interviewpost-heading {
+	color: #2e7655;
+}
+
+.newpost-button {
+	background-color: #2e7655;
+	color: white;
+}
+
+.table-header {
+	color: #2e7655;
+	font-size: 20px;
+}
+
+.table-body {
+	font-size: 18px;
+}
+
+.footer-sub {
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	background-color: #82c2a5;
+	opacity: 0.8;
+}
+
+.footer-sub-details {
+	width: 100%;
+	background-color: #82c2a5;
+	opacity: 0.8;
+}
+
+.button-post {
+	margin-right: 10px;
+}
+
+.button-dashboard {
+	color: white;
+}
+
+.details-body {
+	padding: 0px 100px;
+	margin-top: 20px;
+}
+
+.body-left {
+	width:50%;
+	margin-right: 30px;
+}
+
+.body-right {
+	width:50%;
+	margin-left: 30px;
+}
+
+.details_image {
+	width: 100%;
+}
+
+.post-description {
+	font-size: 20px;
+	font-weight: lighter;
+}
+
+.comments {
+	font-style: italic;
+	color: #ffa516;
+}
+
+.list {
+	padding: 0px;
+	list-style-type: none;
+}
+
+.comment-list {
+	margin: 0;
+	padding: 0px 0px 0px 40px;
+	list-style: none;
+	background-image: url('comments-icon.png');
+	background-repeat: no-repeat;
+	background-position: left upper center;
+	background-size: 30px;
+}
+
+.comment-content {
+	font-size: 20px;
+}

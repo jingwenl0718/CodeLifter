@@ -9,10 +9,6 @@
     --rosewood:#590004;
 }
 
-.details_image {
-	width: 40%;
-}
-
 .col-1 {
 	flex: 1;
 }
@@ -85,7 +81,7 @@ html {
 .header .navbar a {
     color: #333;
     font-size: 1.2rem;
-    margin: 0 .8rem;
+    margin: 0 1.5rem;
     text-decoration: none;
 }
 
