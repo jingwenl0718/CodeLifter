@@ -1,0 +1,93 @@
+:root {
+	    --eggplant:#75485e;
+	    --teal:#0e7c7b;
+}
+
+img {
+	width: 75%;
+}
+
+a {
+	color: var(--eggplant);
+}
+
+h1 {
+	font-weight: bold;
+}
+
+.col-1 form .form-input{
+	border: 2px solid #D5D6D7;
+	padding: .5rem;
+	margin-bottom: 1rem;
+	border-radius: .5rem;
+	width: 100%;
+}
+
+.col-1 form .form-input:focus {
+    border-color: var(--teal);
+}
+
+.btn-reg {
+	display: inline-block;
+    background-color: var(--teal);
+    color: white;
+    padding: .35rem 1.5rem;
+    border: .1rem solid var(--teal);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-reg:hover {
+    background-color: rgba(123, 194, 188, 0.2);
+    color: var(--teal);
+}
+
+.footer-color {
+	background-color: #0e7c7b70;
+}
+
+.footer-color-log {
+	background-color: #75485e70;
+}
+
+.login-box {
+	background-color: #e0e0e0;
+	padding: 3rem 5rem 5.5rem 5rem;
+	border-radius: .5rem;
+}
+
+.login-box h1 {
+	font-weight: bold;
+}
+
+.login-box form .form-input {
+	border: 2px solid #333;
+	padding: .5rem;
+	margin: .8rem 0;
+	border-radius: .5rem;
+	width: 100%;
+	text-transform: none;
+}
+
+.login-box form .form-input:focus {
+    border-color: var(--eggplant);
+}
+
+.btn-log {
+	display: inline-block;
+    background-color: var(--eggplant);
+    color: white;
+    padding: .35rem 1.5rem;
+    border: .1rem solid var(--eggplant);
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-log:hover {
+    background-color: rgba(186,85,211, 0.2);
+    color: var(--eggplant);
+}
+
+.reg-link {
+	color: var(--teal);
+}
