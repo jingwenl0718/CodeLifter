@@ -228,7 +228,20 @@ html {
 
 .recent .box h3 {
 	color: #333;
-	font-size: 2rem;
+	font-size: 1.7rem;
+}
+
+.recent .box .post-type {
+	position: absolute;
+	top:30px;
+	left: 30px;
+	background-color: var(--eggplant);
+	padding: .25rem 1.2rem;
+	border-radius: .5rem;
+	color: white;
+	font-size: .8rem;
+	text-transform: uppercase;
+	border: 2px solid #333;
 }
 
 .recent .box .recent-date {
@@ -239,7 +252,7 @@ html {
 
 .recent .box .content {
 	color: #666;
-	font-size: 1.4rem;
+	font-size: 1rem;
 	padding: 1rem 0;
 }
 
