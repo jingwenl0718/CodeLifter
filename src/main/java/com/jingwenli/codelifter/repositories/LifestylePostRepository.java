@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.jingwenli.codelifter.models.LifestylePost;
+import com.jingwenli.codelifter.models.User;
 
 @Repository
 public interface LifestylePostRepository extends CrudRepository<LifestylePost, Long> {
@@ -15,4 +16,6 @@ public interface LifestylePostRepository extends CrudRepository<LifestylePost, L
 	
 	@Query(value="SELECT * FROM lifestyleposts Order by created_at DESC;", nativeQuery=true)
 	List<LifestylePost> findRecentPost();
+	
+	List<LifestylePost> findByLifestylePostCreator(User user);
 }

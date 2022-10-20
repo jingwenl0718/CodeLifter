@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jingwenli.codelifter.models.SuccessStory;
+import com.jingwenli.codelifter.models.User;
 import com.jingwenli.codelifter.repositories.SuccessStoryRepository;
 
 @Service
@@ -49,5 +50,10 @@ public class SuccessStoryService {
 	public SuccessStory findRecentPost() {
 		List<SuccessStory> postList = successStoryRepo.findRecentPost();
 		return postList.get(0);
+	}
+	
+//	FIND ALL MY POSTS
+	public List<SuccessStory> findAllMyPosts(User user) {
+		return successStoryRepo.findBySuccessStoryCreator(user);
 	}
 }

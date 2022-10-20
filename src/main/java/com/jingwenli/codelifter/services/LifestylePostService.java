@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.jingwenli.codelifter.models.LifestylePost;
+import com.jingwenli.codelifter.models.User;
 import com.jingwenli.codelifter.repositories.LifestylePostRepository;
 
 @Service
@@ -49,5 +50,10 @@ public class LifestylePostService {
 	public LifestylePost findRecentPost() {
 		List<LifestylePost> postList = lifestylePostRepo.findRecentPost();
 		return postList.get(0);
+	}
+	
+//	FIND ALL MY POSTS
+	public List<LifestylePost> findAllMyPosts(User user) {
+		return lifestylePostRepo.findByLifestylePostCreator(user);
 	}
 }
