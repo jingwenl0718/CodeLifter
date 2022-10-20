@@ -80,7 +80,7 @@ html {
 .header .navbar a {
     color: #333;
     font-size: 1.2rem;
-    margin: 0 1.5rem;
+    margin: 0 0.8rem;
     text-decoration: none;
 }
 
@@ -139,6 +139,11 @@ html {
 .success-post-left {
 	position: relative;
   	text-align: center;
+  	transition: transform .3s;
+}
+
+.success-post-left:hover {
+	transform: scale(1.02); 
 }
 
 .success-post-left img {
@@ -164,6 +169,11 @@ html {
 	position: relative;
   	text-align: center;
   	color: white;
+  	transition: transform .3s;
+}
+
+.success-post-right:hover {
+	transform: scale(1.02); 
 }
 
 .success-post-right img {
@@ -186,7 +196,16 @@ html {
 }
 
 .post-box {
-	margin: 5rem 0;
+	margin: 4rem 0;
+	box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
+	border-radius: .5rem;
+	border: 2px solid var(--eggplant);
+	padding: 2rem 1rem;
+	transition: transform .3s;
+}
+
+.post-box:hover {
+	transform: scale(1.02); 
 }
 
 .post-box .img-box {
@@ -283,7 +302,7 @@ html {
 
 .contact-box .col-1 .contact-info {
 	border-radius: .5rem;
-	padding: 4rem 3.5rem 6.8rem 3.5rem;
+	padding: 4rem 3.5rem 7.8rem 3.5rem;
 	border: 2px solid #333;
 	background-color: white;
 	width: 100%;
@@ -292,6 +311,34 @@ html {
 .contact-box .col-1 .contact-info p {
 	font-size: .8rem;
 	color: var(--orche);
+}
+
+.contact form .input-box .form-input{
+	display: block;
+	border: 2px solid #D5D6D7;
+	padding: .5rem;
+	margin-bottom: 1rem;
+	border-radius: .5rem;
+	width: 100%;
+	text-transform: none;
+}
+
+.contact form .text-box .form-input {
+	border: 2px solid #D5D6D7;
+	padding: .5rem;
+	margin-bottom: 1rem;
+	border-radius: .5rem;
+	width: 100%;
+	text-transform: none;
+	display: block;
+}
+
+.contact form .input-box .form-input:focus {
+    border-color: var(--teal);
+}
+
+.contact form .text-box .form-input:focus {
+    border-color: var(--teal);
 }
 
 .btn-contact {
