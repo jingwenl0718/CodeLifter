@@ -44,8 +44,31 @@
 		<a href="#lifestyleposts" class="lifestyleposts">Lifestyle Posts</a> | 
 		<a href="#successstories" class="successstories">Success Stories</a> 
 		<h3 class="mt-5 studygroups" id="studygroups">My Study Groups</h3>
+		<table class="table table-striped table-hover table-bordered mt-3">
+			<thead>
+				<tr>
+					<th>Category</th>
+					<th>Date</th>
+					<th>Level</th>
+					<th>No. of Members Requested</th>
+					<th>Posted On</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="studyGroup" items="${assignedStudyGroups}">
+					<tr>
+						<td><c:out value="${studyGroup.studyCategory}" /></td>
+						<td><a href="/studygroups/${studyGroup.id}"><fmt:formatDate value="${studyGroup.studyDate}" pattern="MMMM dd, yyyy hh:mm aa"/></a></td>
+						<td><c:out value="${studyGroup.difficultyLevel}" /></td>
+						<td><c:out value="${studyGroup.numberGroupMembers}" /></td>
+						<td><fmt:formatDate value="${studyGroup.createdAt}" pattern="MMMM dd, yyyy"/></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		
 		<h3 class="mt-5 jobposts" id="jobposts">My Job Posts</h3>
-		<table class="table table-striped">
+		<table class="table table-striped table-hover table-bordered">
 			<thead>
 	   			<tr>
 	   				<th class="table-header">Title</th>
@@ -64,7 +87,7 @@
 	   		</tbody>
 	   </table>
 	   <h3 class="mt-5 interviewposts" id="interviewprepposts">My Interview Prep Posts</h3>
-	   <table class="table table-striped">
+	   <table class="table table-striped table-hover table-bordered">
 			<thead>
 	   			<tr>
 	   				<th class="table-header">Title</th>
@@ -83,7 +106,7 @@
 	   		</tbody>
 	   </table>
 	   <h3 class="mt-5 lifestyleposts" id="lifestyleposts">My Lifestyle Posts</h3>
-	   <table class="table table-striped">
+	   <table class="table table-striped table-hover table-bordered">
 			<thead>
 	   			<tr>
 	   				<th class="table-header">Title</th>
@@ -102,7 +125,7 @@
 	   		</tbody>
 	   </table>
 	   <h3 class="mt-5 successstories" id="successstories">My Success Stories</h3>
-	   <table class="table table-striped mb-5">
+	   <table class="table table-striped table-hover table-bordered mb-5">
 			<thead>
 	   			<tr>
 	   				<th class="table-header">Title</th>
