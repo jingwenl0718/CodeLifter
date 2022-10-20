@@ -58,11 +58,11 @@ public class HomeController {
     	System.out.print(principal);
     	if (principal == null) {
             model.addAttribute("newContact", new Contact());
-            model.addAttribute("successStory1", successStoryService.findOneSuccessStory((long) 8));
-            model.addAttribute("successStory2", successStoryService.findOneSuccessStory((long) 6));
-            model.addAttribute("successStory3", successStoryService.findOneSuccessStory((long) 5));
-            model.addAttribute("interviewPost", interviewPrepPostService.findOneInterviewPrepPost((long) 11));
-            model.addAttribute("lifestylePost", lifestylePostService.findOneLifestylePost((long) 8));
+            model.addAttribute("successStory1", successStoryService.findOneSuccessStory((long) 4));
+            model.addAttribute("successStory2", successStoryService.findOneSuccessStory((long) 2));
+            model.addAttribute("successStory3", successStoryService.findOneSuccessStory((long) 3));
+            model.addAttribute("interviewPost", interviewPrepPostService.findOneInterviewPrepPost((long) 1));
+            model.addAttribute("lifestylePost", lifestylePostService.findOneLifestylePost((long) 1));
             model.addAttribute("recentJobPost", jobPostService.findRecentPost());
             model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
             model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
@@ -74,11 +74,11 @@ public class HomeController {
             String email = principal.getName();
             model.addAttribute("currentUser", userService.findByEmail(email));
             model.addAttribute("newContact", new Contact());
-            model.addAttribute("successStory1", successStoryService.findOneSuccessStory((long) 8));
-            model.addAttribute("successStory2", successStoryService.findOneSuccessStory((long) 6));
-            model.addAttribute("successStory3", successStoryService.findOneSuccessStory((long) 5));
-            model.addAttribute("interviewPost", interviewPrepPostService.findOneInterviewPrepPost((long) 11));
-            model.addAttribute("lifestylePost", lifestylePostService.findOneLifestylePost((long) 8));
+            model.addAttribute("successStory1", successStoryService.findOneSuccessStory((long) 4));
+            model.addAttribute("successStory2", successStoryService.findOneSuccessStory((long) 2));
+            model.addAttribute("successStory3", successStoryService.findOneSuccessStory((long) 3));
+            model.addAttribute("interviewPost", interviewPrepPostService.findOneInterviewPrepPost((long) 1));
+            model.addAttribute("lifestylePost", lifestylePostService.findOneLifestylePost((long) 1));
             model.addAttribute("recentJobPost", jobPostService.findRecentPost());
             model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
             model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
@@ -97,6 +97,11 @@ public class HomeController {
             model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
             model.addAttribute("recentSuccessStory", successStoryService.findRecentPost());
             model.addAttribute("recentStudyGroupPost", studyService.findRecentPost());
+            model.addAttribute("successStory1", successStoryService.findOneSuccessStory((long) 8));
+            model.addAttribute("successStory2", successStoryService.findOneSuccessStory((long) 6));
+            model.addAttribute("successStory3", successStoryService.findOneSuccessStory((long) 5));
+            model.addAttribute("interviewPost", interviewPrepPostService.findOneInterviewPrepPost((long) 11));
+            model.addAttribute("lifestylePost", lifestylePostService.findOneLifestylePost((long) 8));
     		return "homePage.jsp";
     	}
     	
@@ -118,11 +123,13 @@ public class HomeController {
     public String showMyAccount(@PathVariable("id") Long id, Model model, Principal principal) {
     	String email = principal.getName();
 		User currentUser = userService.findByEmail(email);
+        Long userId = (Long) currentUser.getId();
         model.addAttribute("currentUser", currentUser );
         model.addAttribute("allJobPostList", jobPostService.findAllMyPosts(currentUser));
         model.addAttribute("allInterviewPostList", interviewPrepPostService.findAllMyPosts(currentUser));
         model.addAttribute("allLifestylePostList", lifestylePostService.findAllMyPosts(currentUser));
         model.addAttribute("allSuccessStoryList", successStoryService.findAllMyPosts(currentUser));
+		model.addAttribute("assignedStudyGroups", studyService.getAssignedUsers(userService.findById(userId)));
     	return "myhome.jsp";
     }
     
