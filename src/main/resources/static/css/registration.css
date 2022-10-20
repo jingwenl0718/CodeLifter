@@ -44,10 +44,16 @@ h1 {
 
 .footer-color {
 	background-color: #0e7c7b70;
+	position: relative;
+	bottom: 0;
+	width: 100%;
 }
 
 .footer-color-log {
 	background-color: #75485e70;
+	position: relative;
+	bottom: 0;
+	width: 100%;
 }
 
 .login-box {
