@@ -19,7 +19,7 @@
 			<a href="/dashboard/interviewposts">Interview Prep</a>
 			<a href="/dashboard/lifestyleposts">LifeStyle</a>
 			<a href="/dashboard/successstories">Success Stories</a>
-			<a href="#contactus">Contact Us</a>
+			<a href="/#contactus">Contact Us</a>
 		</div>
 		<div>
 			<c:choose>
