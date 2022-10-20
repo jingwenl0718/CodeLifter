@@ -9,61 +9,121 @@
 	<meta charset="UTF-8">
 	<title>Success Story Details</title>
 	<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/successstory.css">
 </head>
 <body>
-   <div class="container mt-5">
-	   	<div class="d-flex justify-content-between align-items-center">
-	   		<h1 class="mr-5"><c:out value="${oneSuccessStory.title }"/></h1>
-	   		<a class="btn btn-warning" href="/dashboard/successstories">Success Story Dashboard</a>
-	   	</div>
-	   	<img src="<c:url value='${oneSuccessStory.photosImagePath}'></c:url>" alt="image" class="details_image"/>
-		<div class="d-flex align-items-center">
-	   		<h5 class="text-secondary fw-light fst-italic mr-5">(Posted by <c:out value="${oneSuccessStory.successStoryCreator.userName }"/> )</h5>
+	<div class="header">
+		<a href="/" class="logo">CodeLifter</a>
+		<div class="navbar">
+			<a href="/studygroups">Study Groups</a>
+			<a href="/dashboard/jobposts">Jobs</a>
+			<a href="/dashboard/interviewposts">Interview Prep</a>
+			<a href="/dashboard/lifestyleposts">LifeStyle</a>
+			<a href="/dashboard/successstories">Success Stories</a>
+			<a href="#contactus">Contact Us</a>
+		</div>
+		<div>
 			<c:choose>
-				<c:when test="${oneSuccessStory.updatedAt != null }">
-					<h5 class="ml-5"><fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneSuccessStory.updatedAt }"/></h5>
+				<c:when test="${currentUser.id == null}">
+					<a href="/login" class="btn btn-login me-1">Login</a>
+					<a href="/registration " class="btn btn-signup">Sign Up</a>
 				</c:when>
 				<c:otherwise>
-					<h5 class="ml-5"><fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneSuccessStory.createdAt }"/></h5>
+					<form id="logoutForm" method="POST" action="/logout">
+       					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        				<input type="submit" value="Logout!" class="btn btn-logout"/>
+    				</form>
 				</c:otherwise>
 			</c:choose>
 		</div>
-	   	<h4 class="mt-3"><c:out value="${oneSuccessStory.headline }"/></h4>
-	   	<p class="mt-3"><c:out value="${oneSuccessStory.description }"/></p>
+	</div>
+   <div class="section body-main">
+	   	<div class="text-center">
+	   		<h1 class="successstory-heading"><c:out value="${oneSuccessStory.title }"/></h1>
+	   	</div>
+	   	<div class="d-flex align-items-top details-body">
+		   	<div class="body-left">
+			   	<img src="<c:url value='${oneSuccessStory.photosImagePath}'></c:url>" alt="image" class="details_image"/>
+				<div class="d-flex mt-3">
+			   		<h6 class="me-1">Posted by <c:out value="${oneSuccessStory.successStoryCreator.userName }"/></h6>
+					<c:choose>
+						<c:when test="${oneSuccessStory.updatedAt != null }">
+							<h6 class="text-secondary fw-light fst-italic">(<fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneSuccessStory.updatedAt }"/>)</h6>
+						</c:when>
+						<c:otherwise>
+							<h6 class="text-secondary fw-light fst-italic">(<fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneSuccessStory.createdAt }"/>)</h6>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</div>
+			<div class="body-right">
+			   	<h4><c:out value="${oneSuccessStory.headline }"/></h4>
+			   	<p class="mt-3 post-description"><c:out value="${oneSuccessStory.description }"/></p>
+			</div>
+		</div>
 	   	<hr/>
-	    <c:choose>
-  			<c:when test="${currentUser.id.equals(oneSuccessStory.successStoryCreator.id) }">
-				<div class="d-flex justify-content-end">
-					<a class="btn btn-primary" href="/successstories/${oneSuccessStory.id }/edit">Edit</a>
+	   	<div class="d-flex justify-content-end">
+  			<c:if test="${currentUser.id.equals(oneSuccessStory.successStoryCreator.id) }">
+				<div class="d-flex">
+					<a class="btn newpost-button button-post" href="/successstories/${oneSuccessStory.id }/edit">Edit</a>
 					<form action="/successstories/${oneSuccessStory.id }/delete" method="POST">
 						<input type="hidden" name="_method" value="delete"/>
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-						<button class="btn btn-secondary" type="submit">Delete</button>	   								
+						<button class="btn btn-secondary button-post" type="submit">Delete</button>	   								
 					</form>
 				</div>
-		   	</c:when>
-		</c:choose>
-		<form:form action="/successstories/${oneSuccessStory.id }/comment" method="POST" modelAttribute="newComment" class="form col-7 mt-5">
+		   	</c:if>
+	   		<a class="btn btn-warning" href="/dashboard/successstories">Success Story Dashboard</a>
+		</div>
+		<form:form action="/successstories/${oneSuccessStory.id }/comment" method="POST" modelAttribute="newComment" class="form mt-3">
 	   		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/><p>
 	   			<form:label class="h5" path="content">Comment: </form:label>
-	   			<form:textarea class="ml-5 form-control" path="content"/>
+	   			<form:textarea class="form-control" rows="4" path="content"/>
 	   			<form:errors style="color:red" path="content"/>
 	   		</p>
 	   		<form:hidden path="successStory" value="${oneSuccessStory.id}"/>
 	   		<form:hidden path="commenter" value="${currentUser.id}"/>
 	   		<div class="d-flex justify-content-end">
-		   		<button class="btn btn-danger" type="submit">Add Comment</button>
+		   		<button class="btn newpost-button" type="submit">Add Comment</button>
 	   		</div>
 	   </form:form>
-	   <h3>Other CodeLiters Have Said</h3>
-	   <ul>
-	   		<c:forEach var="oneComment" items="${allCommentList}">
-                <li>
-                <p><c:out value="${oneComment.commenter.userName}"/> posted:</p>
-                <p><c:out value="${oneComment.content}"/></p>
-                </li>
-        	</c:forEach>
-	   </ul>
+	   <c:choose>
+	   		<c:when test="${allCommentList.size()!=0}">
+			   <div class="text-center mb-3">
+			   		<h3 class="comments">Other CodeLiters Have Said</h3>
+			   </div>
+			   <div class="mb-5">
+				   <ul class="mb-3 list">
+				   		<c:forEach var="oneComment" items="${allCommentList}">
+			                <li class="comment-list">
+			                <p><c:out value="${oneComment.commenter.userName}"/> posted on <fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneComment.createdAt }"/>:</p>
+			                <p class="comment-content"><c:out value="${oneComment.content}"/></p>
+			                </li>
+			        	</c:forEach>
+				   </ul>
+			   </div>
+	   		</c:when>
+	   		<c:otherwise>
+	   			<div class="text-center mb-3">
+			   		<h3 class="comments">You can be the first one to leave a comment! :)</h3>
+			   </div>
+	   		</c:otherwise>
+	   </c:choose>
    </div>
+   <div class="section footer footer-sub-details">
+    	<div class="d-flex align-items-center justify-content-between">
+    		<div>
+    			<a href="/" class="footer-logo">CodeLifter</a>
+    		</div>
+    		<div>
+    			<p>@CopyRight 2022</p>
+    		</div>
+    		<div>
+    			<p>Developed by: Jingwen Li - Evelyn Valles</p>
+    		</div>
+    	</div>
+    </div>	
+   
 </body>
 </html>

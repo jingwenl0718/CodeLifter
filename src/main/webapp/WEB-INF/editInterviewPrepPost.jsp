@@ -14,13 +14,13 @@
 </head>
 <body>
 	<div class="header">
-		<a href="/" class="logo">CodeLifer</a>
+		<a href="/" class="logo">CodeLifter</a>
 		<div class="navbar">
 			<a href="/studygroups">Study Groups</a>
 			<a href="/dashboard/jobposts">Jobs</a>
 			<a href="/dashboard/interviewposts">Interview Prep</a>
 			<a href="/dashboard/lifestyleposts">LifeStyle</a>
-			<a href="/dashboard/successstories">Success Stores</a>
+			<a href="/dashboard/successstories">Success Stories</a>
 			<a href="#contactus">Contact Us</a>
 		</div>
 		<div>
@@ -70,7 +70,7 @@
 	<div class="section footer footer-sub">
     	<div class="d-flex align-items-center justify-content-between">
     		<div>
-    			<a href="/" class="footer-logo">CodeLifer</a>
+    			<a href="/" class="footer-logo">CodeLifter</a>
     		</div>
     		<div>
     			<p>@CopyRight 2022</p>

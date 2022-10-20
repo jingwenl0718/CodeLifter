@@ -14,13 +14,13 @@
 </head>
 <body>
 	<div class="header">
-		<a href="/" class="logo">CodeLifer</a>
+		<a href="/" class="logo">CodeLifter</a>
 		<div class="navbar">
 			<a href="/studygroups">Study Groups</a>
 			<a href="/dashboard/jobposts">Jobs</a>
 			<a href="/dashboard/interviewposts">Interview Prep</a>
 			<a href="/dashboard/lifestyleposts">LifeStyle</a>
-			<a href="/dashboard/successstories">Success Stores</a>
+			<a href="/dashboard/successstories">Success Stories</a>
 			<a href="#contactus">Contact Us</a>
 		</div>
 		<div>
@@ -63,21 +63,23 @@
 		   	</div>
 	   	</div>
 	   	<hr/>
-		<c:if test="${currentUser.id.equals(oneJobPost.jobPostCreator.id) }">
-			<div class="d-flex justify-content-end">
-				<a class="btn newpost-button button-post" href="/jobposts/${oneJobPost.id }/edit">Edit</a>
-				<form action="/jobposts/${oneJobPost.id }/delete" method="POST">
-					<input type="hidden" name="_method" value="delete"/>
-					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-					<button class="btn btn-secondary button-post" type="submit">Delete</button>	   
-				</form>
-				<a class="btn btn-warning button-dashboard" href="/dashboard/jobposts">Jobs Dashboard</a>								
-			</div>
-	   	</c:if>
+	   	<div class="d-flex justify-content-end">
+			<c:if test="${currentUser.id.equals(oneJobPost.jobPostCreator.id) }">
+				<div class="d-flex">
+					<a class="btn newpost-button button-post" href="/jobposts/${oneJobPost.id }/edit">Edit</a>
+					<form action="/jobposts/${oneJobPost.id }/delete" method="POST">
+						<input type="hidden" name="_method" value="delete"/>
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+						<button class="btn btn-secondary button-post" type="submit">Delete</button>	   
+					</form>
+				</div>
+		   	</c:if>
+			<a class="btn btn-warning button-dashboard" href="/dashboard/jobposts">Jobs Dashboard</a>								
+	   	</div>
 		<form:form action="/jobposts/${oneJobPost.id }/comment" method="POST" modelAttribute="newComment" class="form mt-3">
 	   		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/><p>
 	   			<form:label class="h5" path="content">Comment: </form:label>
-	   			<form:textarea class="ml-5 form-control" rows="4" path="content"/>
+	   			<form:textarea class="form-control" rows="4" path="content"/>
 	   			<form:errors style="color:red" path="content"/>
 	   		</p>
 	   		<form:hidden path="jobPost" value="${oneJobPost.id}"/>
@@ -86,32 +88,41 @@
 		   		<button class="btn newpost-button" type="submit">Add Comment</button>
 	   		</div>
 	   </form:form>
-	   <div class="text-center mb-3">
-	   		<h3 class="comments">Other CodeLiters Have Said</h3>
-	   </div>
-	   <div class="mb-5">
-		   <ul class="mb-3 list">
-		   		<c:forEach var="oneComment" items="${allCommentList}">
-	                <li class="comment-list">
-	                <p><c:out value="${oneComment.commenter.userName}"/> posted on <fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneComment.createdAt }"/>:</p>
-	                <p class="comment-content"><c:out value="${oneComment.content}"/></p>
-	                </li>
-	        	</c:forEach>
-		   </ul>
-	   </div>
+	   <c:choose>
+	   		<c:when test="${allCommentList.size()!=0}">
+			   <div class="text-center mb-3">
+			   		<h3 class="comments">Other CodeLiters Have Said</h3>
+			   </div>
+			   <div class="mb-5">
+				   <ul class="mb-3 list">
+				   		<c:forEach var="oneComment" items="${allCommentList}">
+			                <li class="comment-list">
+			                <p><c:out value="${oneComment.commenter.userName}"/> posted on <fmt:formatDate pattern="MMM dd, yy hh:mm a" type="both" value="${oneComment.createdAt }"/>:</p>
+			                <p class="comment-content"><c:out value="${oneComment.content}"/></p>
+			                </li>
+			        	</c:forEach>
+				   </ul>
+			   </div>
+	   		</c:when>
+	   		<c:otherwise>
+	   			<div class="text-center mb-3">
+			   		<h3 class="comments">You can be the first one to leave a comment! :)</h3>
+			   </div>
+	   		</c:otherwise>
+	   </c:choose>
    </div>
    <div class="section footer footer-sub-details">
-    	<div class="d-flex align-items-center justify-content-between">
-    		<div>
-    			<a href="/" class="footer-logo">CodeLifer</a>
-    		</div>
-    		<div>
-    			<p>@CopyRight 2022</p>
-    		</div>
-    		<div>
-    			<p>Developed by: Jingwen Li - Evelyn Valles</p>
-    		</div>
-    	</div>
+    		<div class="d-flex align-items-center justify-content-between">
+	    		<div>
+	    			<a href="/" class="footer-logo">CodeLifter</a>
+	    		</div>
+	    		<div>
+	    			<p>@CopyRight 2022</p>
+	    		</div>
+	    		<div>
+	    			<p>Developed by: Jingwen Li - Evelyn Valles</p>
+	    		</div>
+	    	</div>
     </div>	
 </body>
 </html>

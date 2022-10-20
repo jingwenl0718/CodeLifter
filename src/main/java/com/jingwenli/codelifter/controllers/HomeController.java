@@ -52,6 +52,7 @@ public class HomeController {
     @RequestMapping(value = {"/", "/home"})
     public String home(Principal principal, Model model) {
         // 1
+    	System.out.print(principal);
     	if (principal == null) {
             model.addAttribute("newContact", new Contact());
             model.addAttribute("recentJobPost", jobPostService.findRecentPost());
