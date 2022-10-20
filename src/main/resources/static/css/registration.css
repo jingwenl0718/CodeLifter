@@ -51,7 +51,7 @@ h1 {
 
 .footer-color-log {
 	background-color: #75485e70;
-	position: relative;
+	position: absolute;
 	bottom: 0;
 	width: 100%;
 }
