@@ -5,7 +5,10 @@ target/
 !**/src/test/**/target/
 env.properties
 .env
-
+/src/main/resources/static/interviewpost-image/**
+/src/main/resources/static/jobpost-image/**
+/src/main/resources/static/lifestylepost-image/**
+/src/main/resources/static/successstory-image/**
 ### STS ###
 .apt_generated
 .classpath
