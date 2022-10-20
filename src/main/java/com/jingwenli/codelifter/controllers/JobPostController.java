@@ -42,7 +42,9 @@ public class JobPostController {
 	
 //	FIND ALL
 	@GetMapping("/dashboard/jobposts")
-	public String allJobPosts(HttpSession session, Model model) {
+	public String allJobPosts(HttpSession session, Model model, Principal principal) {
+        String email = principal.getName();
+        model.addAttribute("currentUser", userService.findByEmail(email));
 		model.addAttribute("allJobPostList", jobPostService.findAllJobPosts());
 		return "jobPostDashboard.jsp";
 	}

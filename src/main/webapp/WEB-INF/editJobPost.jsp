@@ -14,13 +14,13 @@
 </head>
 <body>
 	<div class="header">
-		<a href="/" class="logo">CodeLifer</a>
+		<a href="/" class="logo">CodeLifter</a>
 		<div class="navbar">
 			<a href="/studygroups">Study Groups</a>
 			<a href="/dashboard/jobposts">Jobs</a>
 			<a href="/dashboard/interviewposts">Interview Prep</a>
 			<a href="/dashboard/lifestyleposts">LifeStyle</a>
-			<a href="/dashboard/successstories">Success Stores</a>
+			<a href="/dashboard/successstories">Success Stories</a>
 			<a href="#contactus">Contact Us</a>
 		</div>
 		<div>
@@ -42,21 +42,21 @@
 		<div class="text-center">
 		   <h1 class="jobpost-heading">Edit a Job Post</h1>
 		</div>
-	   <form:form action="/jobposts/${newJobPost.id }/edit" method="POST" modelAttribute="newJobPost" class="form mt-5">
+	   <form:form action="/jobposts/${newJobPost.id }/edit" method="POST" modelAttribute="newJobPost" class="form mt-3">
 	   		<input type="hidden" name="_method" value="put"/>
 	   		<p>
 	   			<form:label class="table-header" path="title">Title: </form:label>
-	   			<form:input class="ml-5 form-control" path="title"/>
+	   			<form:input class="form-control" path="title"/>
 	   			<form:errors style="color:red" path="title"/>
 	   		</p>
 	   		<p>
 	   			<form:label class="table-header" path="headline">Headline: </form:label>
-	   			<form:input class="ml-5 form-control" path="headline"/>
+	   			<form:input class="form-control" path="headline"/>
 	   			<form:errors style="color:red" path="headline"/>
 	   		</p>
 	   		<p>
 	   			<form:label class="table-header" path="description">Job Description: </form:label>
-	   			<form:textarea cols="30" rows="10" class="form-control" path="description"/>
+	   			<form:textarea cols="30" rows="8" class="form-control" path="description"/>
 	   			<form:errors style="color:red" path="description"/>
 	   		</p>
 	   		<form:hidden path="image"/>
@@ -70,7 +70,7 @@
 	<div class="section footer footer-sub">
     	<div class="d-flex align-items-center justify-content-between">
     		<div>
-    			<a href="/" class="footer-logo">CodeLifer</a>
+    			<a href="/" class="footer-logo">CodeLifter</a>
     		</div>
     		<div>
     			<p>@CopyRight 2022</p>

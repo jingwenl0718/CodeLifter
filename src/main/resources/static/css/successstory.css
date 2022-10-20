@@ -2,17 +2,17 @@
 	margin-top: 100px;
 }
 
-.jobpost-heading {
-	color: #0b5394;
+.successstory-heading {
+	color: #5f0f40;
 }
 
 .newpost-button {
-	background-color: #0b5394;
+	background-color: #5f0f40;
 	color: white;
 }
 
 .table-header {
-	color: #0b5394;
+	color: #5f0f40;
 	font-size: 20px;
 }
 
@@ -24,14 +24,14 @@
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	background-color: #9ebbd4;
+	background-color: #a26c8d;
 	opacity: 0.8;
 }
 
 .footer-sub-details {
 	width: 100%;
-	background-color: #9ebbd4;
-	opacity: 0.8;
+	background-color: #a26c8d;
+	opacity: 0.6;
 }
 
 .button-post {

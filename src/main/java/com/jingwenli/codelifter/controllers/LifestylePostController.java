@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.jingwenli.codelifter.models.CommenterLifestylePost;
-import com.jingwenli.codelifter.models.InterviewPrepPost;
 import com.jingwenli.codelifter.models.LifestylePost;
 import com.jingwenli.codelifter.models.User;
 import com.jingwenli.codelifter.services.CommenterLifestylePostService;
@@ -43,7 +42,9 @@ public class LifestylePostController {
 	
 //	FIND ALL
 	@GetMapping("/dashboard/lifestyleposts")
-	public String allLifestyleposts(HttpSession session, Model model) {
+	public String allLifestyleposts(HttpSession session, Model model, Principal principal) {
+		String email = principal.getName();
+        model.addAttribute("currentUser", userService.findByEmail(email));
 		model.addAttribute("allLifestylePostList", lifestylePostService.findAllLifestylePosts());
 		return "lifestylePostDashboard.jsp";
 	}

@@ -7,12 +7,12 @@
 }
 
 .newpost-button {
-	background-color: #078cff;
+	background-color: #c33543;
 	color: white;
 }
 
 .table-header {
-	color: #078cff;
+	color: #c33543;
 	font-size: 20px;
 }
 
@@ -24,13 +24,13 @@
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	background-color: #9ebbd4;
+	background-color:#ea8e97;
 	opacity: 0.8;
 }
 
 .footer-sub-details {
 	width: 100%;
-	background-color: #9ebbd4;
+	background-color: #ea8e97;
 	opacity: 0.8;
 }
 

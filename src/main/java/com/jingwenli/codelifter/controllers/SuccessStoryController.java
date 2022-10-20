@@ -43,7 +43,9 @@ public class SuccessStoryController {
 	
 //	FIND ALL
 	@GetMapping("/dashboard/successstories")
-	public String allSuccessStories(HttpSession session, Model model) {
+	public String allSuccessStories(HttpSession session, Model model, Principal principal) {
+		String email = principal.getName();
+        model.addAttribute("currentUser", userService.findByEmail(email));
 		model.addAttribute("allSuccessStoryList", successStoryService.findAllSuccessStories());
 		return "successStoryDashboard.jsp";
 	}
