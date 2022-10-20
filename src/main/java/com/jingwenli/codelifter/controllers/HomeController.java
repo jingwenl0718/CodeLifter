@@ -78,6 +78,11 @@ public class HomeController {
     public String contactUs(@Valid @ModelAttribute("newContact") Contact newContact, BindingResult result, Model model) {
     	
     	if (result.hasErrors()) {
+            model.addAttribute("recentJobPost", jobPostService.findRecentPost());
+            model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
+            model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
+            model.addAttribute("recentSuccessStory", successStoryService.findRecentPost());
+            model.addAttribute("recentStudyGroupPost", studyService.findRecentPost());
     		return "homePage.jsp";
     	}
     	
