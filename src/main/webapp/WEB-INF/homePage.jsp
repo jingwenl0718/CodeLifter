@@ -53,26 +53,26 @@
 	<div class="section d-flex mt-3">
 		<div class="col-4 me-5">
 			<div class="success-post-left">
-				<img src="<c:url value='${successStory1.photosImagePath}'></c:url>" alt="success story" />
+				<a href="/successstories/${successStory1.id}"><img src="<c:url value='${successStory1.photosImagePath}'></c:url>" alt="success story" /></a>
 				<div class="text-center overlay">
 					<p><fmt:formatDate pattern="MMM dd, yyyy" type="both" value="${successStory1.createdAt }"/></p>
-					<h1><c:out value="${successStory1.title}" /></h1>
+					<h1><a href="/successstories/${successStory1.id}"><c:out value="${successStory1.title}" /></a></h1>
 				</div>
 			</div>
 		</div>
 		<div class="col-2">
 			<div class="success-post-right mb-5">
-				<img src="<c:url value='${successStory2.photosImagePath}'></c:url>" alt="success story" />
+				<a href="/successstories/${successStory2.id}"><img src="<c:url value='${successStory2.photosImagePath}'></c:url>" alt="success story" /></a>
 				<div class="text-center overlay">
 					<p><fmt:formatDate pattern="MMM dd, yyyy" type="both" value="${successStory2.createdAt }"/></p>
-					<h1><c:out value="${successStory2.title}" /></h1>
+					<h1><a href="/successstories/${successStory2.id}"><c:out value="${successStory2.title}" /></a></h1>
 				</div>
 			</div>
 			<div class="success-post-right">
-				<img src="<c:url value='${successStory3.photosImagePath}'></c:url>" alt="success story" />
+				<a href="/successstories/${successStory3.id}"><img src="<c:url value='${successStory3.photosImagePath}'></c:url>" alt="success story" /></a>
 				<div class="text-center overlay">
 					<p><fmt:formatDate pattern="MMM dd, yyyy" type="both" value="${successStory3.createdAt }"/></p>
-					<h1><c:out value="${successStory3.title}" /></h1>
+					<h1><a href="/successstories/${successStory3.id}"><c:out value="${successStory3.title}" /></a></h1>
 				</div>
 			</div>
 		</div>
@@ -85,7 +85,8 @@
 			</div>
 			<div class="content">
 				<h1><c:out value="${interviewPost.title}" /></h1>
-				<p>Here's where you can provide a short except or summary of the article to tease the reader to click your link... Read more</p>
+				<p><c:out value="${interviewPost.headline}" />... 
+				<a href="/interviewposts/${interviewPost.id}">Read more </a></p>
 			</div>
 		</div>
 		<div class="post-box d-flex align-items-center">
@@ -94,7 +95,8 @@
 			</div>
 			<div class="content">
 				<h1><c:out value="${lifestylePost.title}" /></h1>
-				<p>Here's where you can provide a short except or summary of the article to tease the reader to click your link... Read more</p>
+				<p><c:out value="${lifestylePost.headline}" />... 
+				<a href="/lifestyleposts/${lifestylePost.id}">Read more </a></p>
 			</div>
 		</div>
 	</div>

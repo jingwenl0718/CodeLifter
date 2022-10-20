@@ -25,7 +25,7 @@ public class WebSecurityConfig {
 		http.
 	            authorizeRequests()
 	                .antMatchers("/css/**", "/js/**", "/registration", "/", "/home", "/webjars/**", "/interviewpost-image/**",
-	                		"/jobpost-image/**", "/lifestylepost-image/**", "/successstory-image/**", 
+	                		"/jobpost-image/**", "/lifestylepost-image/**", "/successstory-image/**", "/home/contactus",
 	                		"/src/main/resources/static/successstory-image/**",
 	                		"/src/main/resources/static/interviewpost-image/**",
 	                		"/src/main/resources/static/lifestylepost-image/**").permitAll()
