@@ -18,7 +18,7 @@
 			<a href="/dashboard/jobposts">Jobs</a>
 			<a href="/dashboard/interviewposts">Interview Prep</a>
 			<a href="/dashboard/lifestyleposts">LifeStyle</a>
-			<a href="/dashboard/successstories">Success Stores</a>
+			<a href="/dashboard/successstories">Success Stories</a>
 			<a href="#contactus">Contact Us</a>
 		</div>
 		<div>
@@ -40,7 +40,7 @@
 	<div class="d-flex align-items-center justify-content-center">
 		<div class="my-4 login-box">
 			<h1 class="text-center">Sign In to Access Your Account</h1>
-			<form method="POST" action="/login" class="mt-5">
+			<form method="POST" action="/login" class="my-5">
 		        <div>
 		            <label for="email">Email</label>
 		            <input type="text" id="email" name="email" class="form-input" placeholder="Email"/>
