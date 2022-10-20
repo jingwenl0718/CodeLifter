@@ -9,11 +9,14 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jingwenli.codelifter.models.Contact;
+import com.jingwenli.codelifter.models.User;
 import com.jingwenli.codelifter.services.InterviewPrepPostService;
 import com.jingwenli.codelifter.services.JobPostService;
 import com.jingwenli.codelifter.services.LifestylePostService;
@@ -89,6 +92,11 @@ public class HomeController {
     public String contactUs(@Valid @ModelAttribute("newContact") Contact newContact, BindingResult result, Model model) {
     	
     	if (result.hasErrors()) {
+            model.addAttribute("recentJobPost", jobPostService.findRecentPost());
+            model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
+            model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
+            model.addAttribute("recentSuccessStory", successStoryService.findRecentPost());
+            model.addAttribute("recentStudyGroupPost", studyService.findRecentPost());
     		return "homePage.jsp";
     	}
     	
@@ -105,4 +113,18 @@ public class HomeController {
     	
     	return "redirect:/home";
     }
+    
+    @GetMapping("/myhome/{id}")
+    public String showMyAccount(@PathVariable("id") Long id, Model model, Principal principal) {
+    	String email = principal.getName();
+		User currentUser = userService.findByEmail(email);
+        model.addAttribute("currentUser", currentUser );
+        model.addAttribute("allJobPostList", jobPostService.findAllMyPosts(currentUser));
+        model.addAttribute("allInterviewPostList", interviewPrepPostService.findAllMyPosts(currentUser));
+        model.addAttribute("allLifestylePostList", lifestylePostService.findAllMyPosts(currentUser));
+        model.addAttribute("allSuccessStoryList", successStoryService.findAllMyPosts(currentUser));
+    	return "myhome.jsp";
+    }
+    
+    
 }

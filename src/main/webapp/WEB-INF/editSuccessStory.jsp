@@ -22,7 +22,7 @@
 			<a href="/dashboard/interviewposts">Interview Prep</a>
 			<a href="/dashboard/lifestyleposts">LifeStyle</a>
 			<a href="/dashboard/successstories">Success Stories</a>
-			<a href="#contactus">Contact Us</a>
+			<a href="/myhome/${currentUser.id}">My Home</a>
 		</div>
 		<div>
 			<c:choose>
