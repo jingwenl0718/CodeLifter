@@ -55,6 +55,11 @@ public class HomeController {
     	System.out.print(principal);
     	if (principal == null) {
             model.addAttribute("newContact", new Contact());
+            model.addAttribute("successStory1", successStoryService.findOneSuccessStory((long) 8));
+            model.addAttribute("successStory2", successStoryService.findOneSuccessStory((long) 6));
+            model.addAttribute("successStory3", successStoryService.findOneSuccessStory((long) 5));
+            model.addAttribute("interviewPost", interviewPrepPostService.findOneInterviewPrepPost((long) 11));
+            model.addAttribute("lifestylePost", lifestylePostService.findOneLifestylePost((long) 8));
             model.addAttribute("recentJobPost", jobPostService.findRecentPost());
             model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
             model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());
@@ -66,6 +71,11 @@ public class HomeController {
             String email = principal.getName();
             model.addAttribute("currentUser", userService.findByEmail(email));
             model.addAttribute("newContact", new Contact());
+            model.addAttribute("successStory1", successStoryService.findOneSuccessStory((long) 8));
+            model.addAttribute("successStory2", successStoryService.findOneSuccessStory((long) 6));
+            model.addAttribute("successStory3", successStoryService.findOneSuccessStory((long) 5));
+            model.addAttribute("interviewPost", interviewPrepPostService.findOneInterviewPrepPost((long) 11));
+            model.addAttribute("lifestylePost", lifestylePostService.findOneLifestylePost((long) 8));
             model.addAttribute("recentJobPost", jobPostService.findRecentPost());
             model.addAttribute("recentInterviewPost", interviewPrepPostService.findRecentPost());
             model.addAttribute("recentLifestylePost", lifestylePostService.findRecentPost());

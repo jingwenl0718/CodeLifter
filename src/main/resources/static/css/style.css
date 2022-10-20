@@ -156,8 +156,8 @@ html {
 	position: absolute;
   	font-weight: bold;
   	font-size: 1.4rem;
-  	top: 75%;
-  	left: 10%;
+  	top: 65%;
+  	left: 0%;
 }
 
 .success-post-left .overlay h1 {
@@ -186,8 +186,8 @@ html {
 	position: absolute;
   	font-weight: bold;
   	font-size: 1rem;
-  	top: 65%;
-  	left: 5%;
+  	top: 70%;
+  	left: 10%;
 }
 
 .success-post-right .overlay h1 {
@@ -217,7 +217,7 @@ html {
 }
 
 .post-box .content p {
-	font-size: 1rem;
+	font-size: 1.5rem;
 	color: #979A9B;
 }
 
