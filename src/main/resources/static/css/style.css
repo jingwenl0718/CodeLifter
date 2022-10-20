@@ -139,7 +139,8 @@ html {
 .success-post-left {
 	position: relative;
   	text-align: center;
-  	transition: transform .3s;
+  	transition: transform .15s;
+  	cursor: pointer;
 }
 
 .success-post-left:hover {
@@ -148,28 +149,39 @@ html {
 
 .success-post-left img {
     width: 100%;
+    height: 100%;
 	border-radius: 5%;
-	object-fit: contain;
+	object-fit: cover;
 }
 
 .success-post-left .overlay {
 	position: absolute;
   	font-weight: bold;
-  	font-size: 1.4rem;
-  	top: 65%;
-  	left: 0%;
+	bottom: 0; left: 0;
+	border-radius: 1.75rem;
+	height:50%;
+	width: 100%;
+	text-align: center;
+	background: rgba(0,0,0,.4);
+	padding: 1rem;
+	padding-top:3rem;
+	color: white;
 }
 
 .success-post-left .overlay h1 {
-	font-size: 3rem;
+	font-size: 2.8rem;
 	font-weight: bold;
+	position: absolute;
+	bottom: 10%;
 }
 
 .success-post-right {
 	position: relative;
   	text-align: center;
   	color: white;
-  	transition: transform .3s;
+  	transition: transform .15s;
+  	cursor: pointer;
+  	overflow: hidden;
 }
 
 .success-post-right:hover {
@@ -178,21 +190,40 @@ html {
 
 .success-post-right img {
 	width: 100%;
+	height: 100%;
 	border-radius: 5%;
-	object-fit: contain;
+	object-fit: cover;
 }
 
 .success-post-right .overlay {
 	position: absolute;
   	font-weight: bold;
-  	font-size: 1rem;
-  	top: 70%;
-  	left: 10%;
+	bottom: 0; left: 0;
+	border-radius: 1.75rem;
+	height:75%;
+	width: 100%;
+	text-align: center;
+	background: rgba(0,0,0,.4);
+	padding: 1rem;
+	padding-top:3rem;
+	color: white;
 }
 
 .success-post-right .overlay h1 {
-	font-size: 1.7rem;
+	position: absolute;
+	bottom: 10%;
+	font-size: 1.5rem;
 	font-weight: bold;
+}
+
+.success-post-right .overlay h1 a {
+	text-decoration: none;
+	color: white;
+}
+
+.success-post-left .overlay h1 a {
+	text-decoration: none;
+	color: white;
 }
 
 .post-box {
@@ -200,7 +231,7 @@ html {
 	box-shadow: 0 1rem 2rem rgba(0,0,0,.1);
 	border-radius: .5rem;
 	border: 2px solid var(--eggplant);
-	padding: 2rem 1rem;
+	padding: 1.5rem 1rem;
 	transition: transform .3s;
 }
 
@@ -209,16 +240,27 @@ html {
 }
 
 .post-box .img-box {
-	margin-right: 3.5rem;
+	margin-right: 3rem;
+}
+
+.post-box .img-box img {
+	width: 18rem;
+	height: 13rem;
+	object-fit: contain;
 }
 
 .post-box .content h1 {
-	font-size: 2rem;
+	font-size: 1.8rem;
+	margin-bottom: 2.5rem;
 }
 
 .post-box .content p {
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	color: #979A9B;
+}
+
+.post-box .content a{
+	color: var(--eggplant);
 }
 
 .recent .box {
@@ -282,7 +324,7 @@ html {
 .contact .contact-form {
 	border: 2px solid #333;
 	border-radius: .5rem;
-	padding: 2rem 3.5rem;
+	padding: 1.8rem 3.5rem;
 	background-color: white;
 	width: 100%;
 }
@@ -302,7 +344,7 @@ html {
 
 .contact-box .col-1 .contact-info {
 	border-radius: .5rem;
-	padding: 4rem 3.5rem 7.8rem 3.5rem;
+	padding: 4rem 3.5rem 8.5rem 3.5rem;
 	border: 2px solid #333;
 	background-color: white;
 	width: 100%;
