@@ -53,47 +53,47 @@
 	<div class="section d-flex mt-3">
 		<div class="col-4 me-5">
 			<div class="success-post-left">
-				<img src="src\main\resources\static\successstory-image\4\success_story_2.png" alt="success story"/>
+				<img src="<c:url value='${successStory1.photosImagePath}'></c:url>" alt="success story" />
 				<div class="text-center overlay">
-					<p>October 18th, 2022</p>
-					<h1>How I landed my dream job</h1>
+					<p><fmt:formatDate pattern="MMM dd, yyyy" type="both" value="${successStory1.createdAt }"/></p>
+					<h1><c:out value="${successStory1.title}" /></h1>
 				</div>
 			</div>
 		</div>
 		<div class="col-2">
-			<div class="success-post-right mb-2">
-				<img src="src\main\resources\static\successstory-image\6\success_story_4.jpeg" alt="success story"/>
-				<div class="center overlay">
-					<p>October 18th, 2022</p>
-					<h1>How I landed my dream job</h1>
+			<div class="success-post-right mb-5">
+				<img src="<c:url value='${successStory2.photosImagePath}'></c:url>" alt="success story" />
+				<div class="text-center overlay">
+					<p><fmt:formatDate pattern="MMM dd, yyyy" type="both" value="${successStory2.createdAt }"/></p>
+					<h1><c:out value="${successStory2.title}" /></h1>
 				</div>
 			</div>
 			<div class="success-post-right">
-				<img src="src\main\resources\static\successstory-image\7\success_story_5.jpeg" alt="success story"/>
+				<img src="<c:url value='${successStory3.photosImagePath}'></c:url>" alt="success story" />
 				<div class="text-center overlay">
-					<p>October 18th, 2022</p>
-					<h1>How I landed my dream job</h1>
+					<p><fmt:formatDate pattern="MMM dd, yyyy" type="both" value="${successStory3.createdAt }"/></p>
+					<h1><c:out value="${successStory3.title}" /></h1>
 				</div>
 			</div>
 		</div>
 	</div>
 	
 	<div class="section">
-		<div class="post-box d-flex align-items-center justify-content-between ">
+		<div class="post-box d-flex align-items-center">
 			<div class="img-box">
-				<img src="src\main\resources\static\interviewpost-image\1\intervivew_prep_image2.png" alt="study group" />
+				<img src="<c:url value='${interviewPost.photosImagePath}'></c:url>" alt="interview prep post" />
 			</div>
 			<div class="content">
-				<h1>How a study group helped me in interview prep</h1>
+				<h1><c:out value="${interviewPost.title}" /></h1>
 				<p>Here's where you can provide a short except or summary of the article to tease the reader to click your link... Read more</p>
 			</div>
 		</div>
-		<div class="post-box d-flex align-items-center justify-content-between">
+		<div class="post-box d-flex align-items-center">
 			<div class="img-box">
-				<img src="src\main\resources\static\lifestylepost-image\1\yoga.jpeg" alt="study group" />
+				<img src="<c:url value='${lifestylePost.photosImagePath}'></c:url>" alt="lifestyle post" />
 			</div>
 			<div class="content">
-				<h1>Why work-life balance is so essential during the career changing process</h1>
+				<h1><c:out value="${lifestylePost.title}" /></h1>
 				<p>Here's where you can provide a short except or summary of the article to tease the reader to click your link... Read more</p>
 			</div>
 		</div>

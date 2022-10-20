@@ -4,6 +4,7 @@
 
 .lifestylepost-heading {
 	color: #c33543;
+	padding: 0px 100px;
 }
 
 .newpost-button {
@@ -24,13 +25,13 @@
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	background-color:#ea8e97;
+	background-color:#f5c6ca;
 	opacity: 0.8;
 }
 
 .footer-sub-details {
 	width: 100%;
-	background-color: #ea8e97;
+	background-color: #f5c6ca;
 	opacity: 0.8;
 }
 

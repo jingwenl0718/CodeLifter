@@ -4,6 +4,7 @@
 
 .interviewpost-heading {
 	color: #2e7655;
+	padding: 0px 100px;
 }
 
 .newpost-button {
@@ -24,13 +25,13 @@
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	background-color: #82c2a5;
+	background-color: #aad9c3;
 	opacity: 0.8;
 }
 
 .footer-sub-details {
 	width: 100%;
-	background-color: #82c2a5;
+	background-color: #aad9c3;
 	opacity: 0.8;
 }
 

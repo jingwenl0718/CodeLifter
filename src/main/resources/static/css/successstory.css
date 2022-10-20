@@ -3,16 +3,17 @@
 }
 
 .successstory-heading {
-	color: #5f0f40;
+	color: #e36414;
+	padding: 0px 100px;
 }
 
 .newpost-button {
-	background-color: #5f0f40;
+	background-color: #e36414;
 	color: white;
 }
 
 .table-header {
-	color: #5f0f40;
+	color: #e36414;
 	font-size: 20px;
 }
 
@@ -24,13 +25,13 @@
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	background-color: #a26c8d;
+	background-color: #f9b890;
 	opacity: 0.8;
 }
 
 .footer-sub-details {
 	width: 100%;
-	background-color: #a26c8d;
+	background-color: #f9b890;
 	opacity: 0.6;
 }
 
