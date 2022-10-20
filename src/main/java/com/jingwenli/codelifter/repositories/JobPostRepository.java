@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.jingwenli.codelifter.models.JobPost;
+import com.jingwenli.codelifter.models.User;
 
 @Repository
 public interface JobPostRepository extends CrudRepository<JobPost, Long> {
@@ -15,4 +16,6 @@ public interface JobPostRepository extends CrudRepository<JobPost, Long> {
 	
 	@Query(value="SELECT * FROM jobposts Order by created_at DESC;", nativeQuery=true)
 	List<JobPost> findRecentPost();
+	
+	List<JobPost> findByJobPostCreator(User user);
 }

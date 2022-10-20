@@ -78,7 +78,7 @@ public class JobPostController {
 	
 //	EDIT
 	@GetMapping("/jobposts/{id}/edit")
-	public String showEditJobPostForm(@PathVariable("id") Long id, Model model, Principal principal, HttpSession session) {
+	public String showEditJobPostForm(@PathVariable("id") Long id, Model model, Principal principal) {
 		String email = principal.getName();
 		User currentUser = userService.findByEmail(email);
         model.addAttribute("currentUser", currentUser );

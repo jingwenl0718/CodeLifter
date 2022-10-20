@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.jingwenli.codelifter.models.SuccessStory;
+import com.jingwenli.codelifter.models.User;
 
 @Repository
 public interface SuccessStoryRepository extends CrudRepository<SuccessStory, Long> {
@@ -15,4 +16,6 @@ public interface SuccessStoryRepository extends CrudRepository<SuccessStory, Lon
 	
 	@Query(value="SELECT * FROM successstories Order by created_at DESC;", nativeQuery=true)
 	List<SuccessStory> findRecentPost();
+	
+	List<SuccessStory> findBySuccessStoryCreator(User user);
 }

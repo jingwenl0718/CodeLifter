@@ -1,0 +1,37 @@
+.body-main {
+	margin-top: 100px;
+}
+
+.footer-sub {
+	/* position: absolute;
+	bottom: 0px; */
+	width: 100%;
+	background-color: #ab7171;
+	opacity: 0.8;
+}
+
+.footer-sub-details {
+	width: 100%;
+	background-color: #ab7171;
+	opacity: 0.8;
+}
+
+.studygroups {
+	color: #590004;
+}
+
+.jobposts {
+	color: #0b5394;
+}
+
+.interviewposts {
+	color: #2e7655;
+}
+
+.lifestyleposts {
+	color: #c33543;
+}
+
+.successstories {
+	color: #e36414;
+}
