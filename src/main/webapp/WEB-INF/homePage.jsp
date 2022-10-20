@@ -21,7 +21,7 @@
 			<a href="/dashboard/jobposts">Jobs</a>
 			<a href="/dashboard/interviewposts">Interview Prep</a>
 			<a href="/dashboard/lifestyleposts">LifeStyle</a>
-			<a href="/dashboard/successstories">Success Stores</a>
+			<a href="/dashboard/successstories">Success Stories</a>
 			<a href="#contactus">Contact Us</a>
 		</div>
 		<div>
@@ -184,30 +184,30 @@
 		    	<div class="input-box">
 		    		<div>
 						<form:label class="form-label" path="contactName">Your Name: </form:label>
-						<form:input type="text" class="form-control mb-1" path="contactName"/>
+						<form:input type="text" class="form-input mb-1" path="contactName"/>
 						<form:errors path="contactName" class="text-danger"/>
 					</div>
 					<div>
 						<form:label class="form-label" path="formAddress">Email Address: </form:label>
-						<form:input type="text" class="form-control mb-1" path="formAddress"/>
+						<form:input type="text" class="form-input mb-1" path="formAddress"/>
 						<form:errors path="formAddress" class="text-danger"/>
 					</div>
 				</div>
 				<div class="input-box">
 					<div>
 						<form:label class="form-label" path="phoneNumber">Phone Number: </form:label>
-						<form:input type="tel" class="form-control mb-1" path="phoneNumber"/>
+						<form:input type="tel" class="form-input mb-1" path="phoneNumber"/>
 						<form:errors path="phoneNumber" class="text-danger"/>
 					</div>
 					<div>
 						<form:label class="form-label" path="formSubject">Subject: </form:label>
-						<form:input type="tel" class="form-control mb-1" path="formSubject"/>
+						<form:input type="tel" class="form-input mb-1" path="formSubject"/>
 						<form:errors path="formSubject" class="text-danger"/>
 					</div>
 				</div>
 				<div class="text-box">
 					<form:label class="form-label" path="formMessage">Your Message: </form:label>
-					<form:textarea class="form-control mb-1" path="formMessage"/>
+					<form:textarea class="form-input mb-1" path="formMessage"/>
 					<form:errors path="formMessage" class="text-danger"/>
 				</div>
 				<input type="submit" class="btn btn-contact mt-3" />
