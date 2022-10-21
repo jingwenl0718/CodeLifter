@@ -4,6 +4,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 env.properties
+**/.DS_Store
 .env
 /src/main/resources/static/interviewpost-image/**
 /src/main/resources/static/jobpost-image/**

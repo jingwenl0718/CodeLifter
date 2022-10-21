@@ -29,7 +29,7 @@ Overall, it was a great development experience! Although we encountered a few ch
 ## Installation 
 1. Clone the repo
    ```
-   git clone https://github.com/jingwenl0718/CodeLifter.gits
+   git clone https://github.com/jingwenl0718/CodeLifter.git
    ```
 
 2. Create a file named "env.properties" in the project root directory
