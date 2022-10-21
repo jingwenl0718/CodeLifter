@@ -10,7 +10,7 @@ During the project, I was responsible for building the data models (including ma
 Overall, it was a great development experience! Although we encountered a few challenges along the way, including but not limited to establishing complex data models, collaborating via GitHub, implementing Spring Security for authentication and image upload and display using JPA, this project sharpened my skillsets in terms of problem solving, team colloboration, and project management. 
 
 ## Demo
-
+https://youtu.be/TLVrTsRbfww
 
 ## Table of Contents
 - [Prerequisites](#prerequisites)
