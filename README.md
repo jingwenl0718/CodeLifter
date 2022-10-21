@@ -21,10 +21,10 @@ Overall, it was a great development experience! Although we encountered a few ch
 - [Todo](#todo)
 
 ## Prerequisites
-- [Spring Tools Suite](https://spring.io/tools)
+- [Spring Tool Suite](https://spring.io/tools)
 - [MySQL](https://downloads.mysql.com/archives/community/)(Mac)
 - [MySQL](https://dev.mysql.com/downloads/windows/installer/8.0.html)(Windows)
-- [MySQL Workbench] (https://dev.mysql.com/downloads/workbench/#downloads)
+- [MySQL Workbench](https://dev.mysql.com/downloads/workbench/#downloads)
 
 ## Installation 
 1. Clone the repo
