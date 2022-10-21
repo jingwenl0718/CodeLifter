@@ -29,7 +29,7 @@ Overall, it was a great development experience! Although we encountered a few ch
 ## Installation 
 1. Clone the repo
    ```
-   git clone https://github.com/jingwenl0718/CodeLifter-JavaProject.git
+   git clone https://github.com/jingwenl0718/CodeLifter.gits
    ```
 
 2. Create a file named "env.properties" in the project root directory
@@ -52,11 +52,11 @@ Overall, it was a great development experience! Although we encountered a few ch
 2. Open a browser and navigate to http://localhost:8080.
 
 ## Credits
-Special thanks to my group mate Evelyn Valles (https://github.com/evelynvalles) for creating an amazing project together! 
+Special thanks to my groupmate Evelyn Valles (https://github.com/evelynvalles) for creating an amazing project together! 
 
 ## License
-MIT License (https://github.com/jingwenl0718/CodeLifter-JavaProject/blob/main/LICENSE)
+MIT License (https://github.com/jingwenl0718/CodeLifter/blob/main/LICENSE)
 
 ## Todo
 - Allow users to make friends with each other in order to further collaboration.
-- Implement private chat between users.   
+- Implement private chat between users.
