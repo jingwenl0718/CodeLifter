@@ -7,7 +7,7 @@ The inspiration behind this project came from the idea that we wanted to create 
 
 During the project, I was responsible for building the data models (including many-to-many and one-to-many) for `jobs`, `interview prep`, `lifestyle` and `success stories` sections, implementing image upload and display functionality, creating custom queries to our database hosted by mySQL and finally deploying the app on AWS. In addition, I was also the project manager designing and organizing agile meetings, overseeing the entire progress, and ensuring that the project gets delivered on time. 
 
-Overall, it was a great development experience! Although we encountered a few challenges along the way, including but not limited to establishing complex data models, collaborating via GitHub, implementing Spring Security for authentication and image upload and display using JPA, this project sharpened my skillsets in terms of problem solving, team colloboration, and project management. 
+Overall, it was a great development experience! Although we encountered a few challenges along the way, including but not limited to establishing complex data models, collaborating via GitHub, implementing Spring Security for authentication and image upload and display using MultipartFile, this project sharpened my skillsets in terms of problem solving, team colloboration, and project management. 
 
 ## Demo
 https://youtu.be/TLVrTsRbfww
