@@ -1,7 +1,7 @@
 # CodeLifter
 
 ## Description 
-This is a Java Spring-based application built using Spring Boot, Spring Security, Spring Data JPA, MySQL, JSP, JavaMailSender, and CSS. The project was created in a one-week sprint with another software developer. 
+This is a Java Spring-based application built using Spring Boot, Spring Security, Spring Data JPA, MySQL, JSP, MultipartFile, JavaMailSender, and CSS. The project was created in a one-week sprint with another software developer. 
 
 The inspiration behind this project came from the idea that we wanted to create a sense of community for people who are trying to break into software development from non-traditional backgrounds. Therefore, a platform was established where website visitors can share experiences and exchanging ideas via forming/joining study groups, creating/commenting on posts regarding jobs, interview preparation, lifestyle, and success stories. 
 
